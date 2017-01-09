@@ -83,9 +83,8 @@ endif
 " fine backport from frugalware
 
 
-let g:pathogen_disabled = ['YouCompleteMe']
 if v:version < 704
-	let g:pathogen_disabled += ['ultisnips', 'tagbar']
+	let g:pathogen_disabled = ['jedi-vim', 'vim-startify', 'syntastic', 'tagbar', 'ultisnips']
 else
 	set colorcolumn=94 " 90-character line coloring
 	" folding
