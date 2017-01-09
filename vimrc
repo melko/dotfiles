@@ -150,6 +150,7 @@ set lazyredraw " Don't update the display while executing macros
 set virtualedit=block " Allow the cursor to go in to invalid places in visual block mode
 set wildmode=longest,list,full
 set wildmenu " Make the command line completion better
+set updatetime=500 " refresh time
 
 " use <leader>+space as shortcut to nohlsearch
 nnoremap <leader><space> :noh<cr>
