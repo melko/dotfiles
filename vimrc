@@ -149,6 +149,7 @@ set lazyredraw " Don't update the display while executing macros
 set virtualedit=block " Allow the cursor to go in to invalid places in visual block mode
 set wildmode=longest,list,full
 set wildmenu " Make the command line completion better
+set completeopt=menuone,preview
 set updatetime=500 " refresh time
 
 " use <leader>+space as shortcut to nohlsearch
@@ -164,6 +165,9 @@ autocmd Filetype gitcommit setlocal spell
 
 " supertab
 "let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+" silly jedi-vim trying to guess what is the best for me
+let g:jedi#auto_vim_configuration = 0
 
 " configuration for vim-airline plugin
 let g:airline#extensions#tabline#enabled = 1 "list of buffers on top
