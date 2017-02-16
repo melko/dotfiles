@@ -114,6 +114,7 @@ nmap <leader><Right> :bnext<CR>
 "plugin taglist
 nnoremap <silent> <F2> :TagbarToggle<CR>
 nnoremap <silent> <F3> :TagbarOpenAutoClose<CR>
+nnoremap <silent> <F4> :Explore<CR>
 
 "plugin syntastic
 "let g:syntastic_mode_map['mode'] = 'passive'
