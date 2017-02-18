@@ -109,6 +109,8 @@ imap <c-c> <ESC>
 runtime! ftplugin/man.vim " allow to use the :Map command and <leader>K
 nmap <leader><Left> :bprevious<CR>
 nmap <leader><Right> :bnext<CR>
+" often I want to just close a buffer and I end up closing the whole session
+cabbrev q bd
 "let mapleader = ","
 
 "plugin taglist
