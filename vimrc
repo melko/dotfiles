@@ -119,6 +119,7 @@ set ls=2 "imposta la statusbar sempre visibile
 set number "abilita i numeri di riga
 set undolevels=1000
 set splitright splitbelow
+set tags=./tags,tags;
 imap jk <ESC>l
 imap <c-c> <ESC>
 runtime! ftplugin/man.vim " allow to use the :Map command and <leader>K
