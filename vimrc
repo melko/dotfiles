@@ -98,7 +98,6 @@ function! Bye(bang)
 	endif
 endfunction
 
-
 if v:version < 704
 	let g:pathogen_disabled = ['jedi-vim', 'vim-startify', 'syntastic', 'tagbar', 'ultisnips']
 else
@@ -126,10 +125,10 @@ runtime! ftplugin/man.vim " allow to use the :Map command and <leader>K
 nmap <leader><Left> :bprevious<CR>
 nmap <leader><Right> :bnext<CR>
 " often I want to just close a buffer and I end up closing the whole session
-command -bang Q exec Bye(<bang>0)
-command -bang WQ write<bar>exec Bye(<bang>0)
-cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Q' : 'q')<CR>
-cabbrev wq <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'WQ' : 'wq')<CR>
+"command -bang Q exec Bye(<bang>0)
+"command -bang WQ write<bar>exec Bye(<bang>0)
+"cabbrev q <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Q' : 'q')<CR>
+"cabbrev wq <c-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'WQ' : 'wq')<CR>
 "let mapleader = ","
 
 "plugin taglist
