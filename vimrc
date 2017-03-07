@@ -173,6 +173,7 @@ set virtualedit=block " Allow the cursor to go in to invalid places in visual bl
 set wildmode=longest,list,full
 set wildmenu " Make the command line completion better
 set completeopt=menuone,preview
+inoremap <expr> <CR> pumvisible() ? "\<C-y>\<C-o>:pc\<CR>" : "\<C-g>u\<CR>"
 set updatetime=500 " refresh time
 
 " use <leader>+space as shortcut to nohlsearch
