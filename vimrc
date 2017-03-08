@@ -105,6 +105,10 @@ else
 	" folding
 	set foldmethod=syntax " syntax option is slow with large files, set it by hand when needed
 	set foldlevel=99
+
+	" persistent undo
+	set undodir=~/.vim/undodir
+	set undofile
 endif
 call pathogen#infect()
 call pathogen#helptags()
@@ -117,6 +121,7 @@ colorscheme molokai
 set hidden " allows buffers to be hidden
 set ls=2 "imposta la statusbar sempre visibile
 set number "abilita i numeri di riga
+set cursorline
 set undolevels=1000
 set splitright splitbelow
 set tags=./tags,tags;
