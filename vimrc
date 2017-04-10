@@ -187,17 +187,20 @@ nnoremap <leader><space> :noh<cr>
 " set spell checking for git commit messages
 autocmd Filetype gitcommit setlocal spell
 
+" ripgrep
+if executable('rg')
+	set grepprg=rg\ --vimgrep\ --no-heading
+	command -nargs=+ -complete=file -bar Grep silent! grep! <args>|cwindow|redraw!
+	let g:ctrlp_user_command = 'rg --files %s'
+	let g:ctrlp_use_caching = 0
 " The Silver Searcher
-if executable('ag')
+elseif executable('ag')
 	" Use ag over grep
 	set grepprg=ag\ --nogroup\ --nocolor
-
-	" Add command :Ag
-	command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-
+	" Add command :Grep
+	command -nargs=+ -complete=file -bar Grep silent! grep! <args>|cwindow|redraw!
 	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
 	" ag is fast enough that CtrlP doesn't need to cache
 	let g:ctrlp_use_caching = 0
 endif
