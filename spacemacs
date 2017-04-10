@@ -321,6 +321,9 @@ you should place your code here."
 
 
   (add-to-list 'exec-path "~/.local/bin")
+  (setq-default case-fold-search nil)
+  (setq-default evil-ex-search-case 'sensitive)
+  (setq-default evil-ex-search-vim-style-regexp t)
   (setq-default evil-escape-key-sequence "jk")
   (setq-default tab-width 8)
   (setq-default indent-tabs-mode t) ;use tab instead of space
