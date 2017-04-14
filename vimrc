@@ -186,6 +186,8 @@ nnoremap <leader><space> :noh<cr>
 
 " set spell checking for git commit messages
 autocmd Filetype gitcommit setlocal spell
+" always set the cursor at the first line when editing git commit messages
+autocmd Filetype gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 " ripgrep
 if executable('rg')
