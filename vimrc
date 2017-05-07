@@ -115,6 +115,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-localrc', Cond(v:version > 704)
+Plug 'tpope/vim-sleuth'
 call plug#end()
 
 set t_Co=256
