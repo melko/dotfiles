@@ -83,9 +83,7 @@ endif
 
 " end of frugalware backport
 
-if v:version < 704
-	let g:pathogen_disabled = ['jedi-vim', 'vim-startify', 'syntastic', 'tagbar', 'ultisnips']
-else
+if v:version > 704
 	set colorcolumn=94 " 90-character line coloring
 	" folding
 	set foldmethod=syntax " syntax option is slow with large files, set it by hand when needed
@@ -95,8 +93,29 @@ else
 	set undodir=~/.vim/undodir
 	set undofile
 endif
-call pathogen#infect()
-call pathogen#helptags()
+
+" vim-plug
+call plug#begin('~/.vim/plugged')
+" helper function
+function! Cond(cond, ...)
+	let opts = get(a:000, 0, {})
+	return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
+Plug 'davidhalter/jedi-vim', Cond(v:version > 704)
+Plug 'tomasr/molokai'
+Plug 'vim-syntastic/syntastic', Cond(v:version > 704)
+Plug 'majutsushi/tagbar', Cond(v:version > 704)
+Plug 'SirVer/ultisnips', Cond(v:version > 704)
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-fugitive'
+Plug 'honza/vim-snippets', Cond(v:version > 704)
+Plug 'mhinz/vim-startify'
+Plug 'sheerun/vim-polyglot'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'thinca/vim-localrc'
+call plug#end()
 
 set t_Co=256
 "let g:inkpot_black_background = 1
