@@ -109,8 +109,8 @@ Plug 'majutsushi/tagbar', Cond(v:version > 704)
 Plug 'SirVer/ultisnips', Cond(v:version > 704)
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
-Plug 'honza/vim-snippets', Cond(v:version > 704)
-Plug 'mhinz/vim-startify'
+Plug 'honza/vim-snippets'
+Plug 'mhinz/vim-startify', Cond(v:version > 704)
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
