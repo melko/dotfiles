@@ -92,6 +92,11 @@ if v:version > 704
 	" persistent undo
 	set undodir=~/.vim/undodir
 	set undofile
+
+	" different cursor shapes for each mode
+	let &t_SI = "\<Esc>[6 q"
+	let &t_SR = "\<Esc>[4 q"
+	let &t_EI = "\<Esc>[2 q"
 endif
 
 " vim-plug
