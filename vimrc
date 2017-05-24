@@ -92,11 +92,6 @@ if v:version > 704
 	" persistent undo
 	set undodir=~/.vim/undodir
 	set undofile
-
-	" different cursor shapes for each mode
-	let &t_SI = "\<Esc>[6 q"
-	let &t_SR = "\<Esc>[4 q"
-	let &t_EI = "\<Esc>[2 q"
 endif
 
 " vim-plug
@@ -121,6 +116,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-localrc', Cond(v:version > 704)
 Plug 'tpope/vim-sleuth'
+Plug 'jszakmeister/vim-togglecursor', Cond(v:version > 704)
 call plug#end()
 
 set t_Co=256
