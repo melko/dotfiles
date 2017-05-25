@@ -52,7 +52,7 @@ if has("autocmd")
 		au!
 
 		" For all text files set 'textwidth' to 78 characters.
-		"autocmd FileType text setlocal textwidth=78
+		" autocmd FileType text setlocal textwidth=78
 		set wrap
 
 		" When editing a file, always jump to the last known cursor position.
@@ -69,7 +69,7 @@ if has("autocmd")
 
 else
 
-	set autoindent                " always set autoindenting on
+	set autoindent " always set autoindenting on
 
 endif " has("autocmd")
 
@@ -84,7 +84,7 @@ endif
 " end of frugalware backport
 
 if v:version > 704
-	set colorcolumn=94 " 90-character line coloring
+	set colorcolumn=95 " 95-character line coloring
 	" folding
 	set foldmethod=syntax " syntax option is slow with large files, set it by hand when needed
 	set foldlevel=99
@@ -120,26 +120,63 @@ Plug 'ciaranm/detectindent'
 Plug 'jszakmeister/vim-togglecursor', Cond(v:version > 704)
 call plug#end()
 
-set t_Co=256
-"let g:inkpot_black_background = 1
 colorscheme molokai
-"colorscheme desert
-"highlight Pmenu ctermfg=Black ctermbg=DarkMagenta
+set lazyredraw " Don't update the display while executing macros
+set updatetime=500 " refresh time
+set virtualedit=block " Allow the cursor to go in to invalid places in visual block mode
+set wildmode=longest,list,full
+set wildmenu " Make the command line completion better
+set completeopt=menuone,preview
+set t_Co=256
+set synmaxcol=800 " Don't try to highlight lines longer than 800 characters.
 set hidden " allows buffers to be hidden
-set ls=2 "imposta la statusbar sempre visibile
-set number "abilita i numeri di riga
+set ls=2 " always shown statusbar
+set number " enable row numbers
 set cursorline
 set undolevels=1000
 set splitright splitbelow
 set tags=./tags,tags;
-imap jk <ESC>l
-imap <c-c> <ESC>
 runtime! ftplugin/man.vim " allow to use the :Map command and <leader>K
+
+" highlight tabs and trailing spaces
+highlight SpecialKey ctermfg=DarkRed guifg=DarkRed
+set listchars=tab:>-,trail:~
+set list
+
+autocmd InsertLeave * set nopaste " Disable paste mode when leaving insert mode
+set pastetoggle=<leader>p
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+command Sudow w !sudo tee % > /dev/null
+
+" set spell checking for git commit messages
+autocmd Filetype gitcommit setlocal spell
+" always set the cursor at the first line when editing git commit messages
+autocmd Filetype gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" Don't move on *
+"nnoremap * *<c-o>
+nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
+" highlight when double ckicking with mouse
+" set mouse=a is needed
+" do not use noremap here since we want the same behaviour as *
+map <2-LeftMouse> *
+imap <2-LeftMouse> <c-o>*
+" use <leader>+space as shortcut to nohlsearch
+nnoremap <leader><space> :noh<cr>
+
+" handy shortcuts to move between buffers
 nmap <leader><Left> :bprevious<CR>
 nmap <leader><Right> :bnext<CR>
-"let mapleader = ","
 
-"plugin taglist
+" ESC is so far away
+imap jk <ESC>l
+imap <c-c> <ESC>
+
+" close annoying preview window when done
+inoremap <expr> <CR> pumvisible() ? "\<C-y>\<C-o>:pc\<CR>" : "\<C-g>u\<CR>"
+
+" plugin taglist
 nnoremap <silent> <F2> :TagbarToggle<CR>
 nnoremap <silent> <F3> :TagbarOpenAutoClose<CR>
 nnoremap <silent> <F4> :Explore<CR>
@@ -149,12 +186,12 @@ nnoremap <silent> <F4> :Explore<CR>
 let g:syntastic_mode_map = {'mode': 'passive'}
 nnoremap <silent> <leader>cc :SyntasticCheck<CR>
 
-"plugin detectindent
+" plugin detectindent
 augroup detectindent
 	autocmd BufReadPost * :DetectIndent
 augroup END
 
-"cscope
+" cscope
 if has("cscope")
 	" load cscope.out going back into hierarchy if necessary
 	function! LoadCscope()
@@ -170,47 +207,6 @@ if has("cscope")
 
 	set cscopetag
 endif
-
-"highlight tabs and trailing spaces
-highlight SpecialKey ctermfg=DarkRed guifg=DarkRed
-set listchars=tab:>-,trail:~
-set list
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-command Sudow w !sudo tee % > /dev/null
-
-set synmaxcol=800 " Don't try to highlight lines longer than 800 characters.
-
-" Don't move on *
-"nnoremap * *<c-o>
-nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
-" highlight when double ckicking with mouse
-" set mouse=a is needed
-" do not use noremap here since we want the same behaviour as *
-map <2-LeftMouse> *
-imap <2-LeftMouse> <c-o>*
-" Keep search matches in the middle of the window.
-"nnoremap n nzz
-"nnoremap N Nzz
-
-au InsertLeave * set nopaste " Disable paste mode when leaving insert mode
-set pastetoggle=<leader>p
-
-set lazyredraw " Don't update the display while executing macros
-set virtualedit=block " Allow the cursor to go in to invalid places in visual block mode
-set wildmode=longest,list,full
-set wildmenu " Make the command line completion better
-set completeopt=menuone,preview
-inoremap <expr> <CR> pumvisible() ? "\<C-y>\<C-o>:pc\<CR>" : "\<C-g>u\<CR>"
-set updatetime=500 " refresh time
-
-" use <leader>+space as shortcut to nohlsearch
-nnoremap <leader><space> :noh<cr>
-
-" set spell checking for git commit messages
-autocmd Filetype gitcommit setlocal spell
-" always set the cursor at the first line when editing git commit messages
-autocmd Filetype gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 " ripgrep
 if executable('rg')
@@ -229,14 +225,6 @@ elseif executable('ag')
 	" ag is fast enough that CtrlP doesn't need to cache
 	let g:ctrlp_use_caching = 0
 endif
-
-" ultisnips and youcompleteme
-"let g:UltiSnipsExpandTrigger = "<c-j>"
-"let g:ycm_autoclose_preview_window_after_completion=1
-"map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" supertab
-"let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " silly jedi-vim trying to guess what is the best for me
 let g:jedi#auto_vim_configuration = 0
@@ -261,6 +249,7 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " avoid slow down for huge files because of syntax folding
+" actually I don't even use folding that much
 if !exists("my_auto_commands_loaded")
 	let my_auto_commands_loaded = 1
 	" Large files are > 80K
