@@ -132,7 +132,6 @@ set cursorline
 set undolevels=1000
 set splitright splitbelow
 set tags=./tags,tags;
-set cscopetag
 imap jk <ESC>l
 imap <c-c> <ESC>
 runtime! ftplugin/man.vim " allow to use the :Map command and <leader>K
@@ -154,6 +153,23 @@ nnoremap <silent> <leader>cc :SyntasticCheck<CR>
 augroup detectindent
 	autocmd BufReadPost * :DetectIndent
 augroup END
+
+"cscope
+if has("cscope")
+	" load cscope.out going back into hierarchy if necessary
+	function! LoadCscope()
+		let db = findfile("cscope.out", ".;")
+		if (!empty(db))
+			let path = strpart(db, 0, match(db, "/cscope.out$"))
+			set nocscopeverbose
+			exe "cs add " . db . " " . path
+			set cscopeverbose
+		endif
+	endfunction
+	autocmd BufEnter /* call LoadCscope()
+
+	set cscopetag
+endif
 
 "highlight tabs and trailing spaces
 highlight SpecialKey ctermfg=DarkRed guifg=DarkRed
