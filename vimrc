@@ -115,7 +115,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-localrc', Cond(v:version > 704)
-Plug 'tpope/vim-sleuth'
+"Plug 'tpope/vim-sleuth'
+Plug 'ciaranm/detectindent'
 Plug 'jszakmeister/vim-togglecursor', Cond(v:version > 704)
 call plug#end()
 
@@ -148,6 +149,11 @@ nnoremap <silent> <F4> :Explore<CR>
 "let g:syntastic_mode_map['mode'] = 'passive'
 let g:syntastic_mode_map = {'mode': 'passive'}
 nnoremap <silent> <leader>cc :SyntasticCheck<CR>
+
+"plugin detectindent
+augroup detectindent
+	autocmd BufReadPost * :DetectIndent
+augroup END
 
 "highlight tabs and trailing spaces
 highlight SpecialKey ctermfg=DarkRed guifg=DarkRed
