@@ -1,4 +1,6 @@
-" changes backported from frugalware vimrc
+"-----------------------------------------------------------------------------
+"----------------- CHANGES BACKPORTED FROM FRUGALWARE VIMRC ------------------
+"-----------------------------------------------------------------------------
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -81,7 +83,9 @@ if !exists(":DiffOrig")
 		\ | wincmd p | diffthis
 endif
 
-" end of frugalware backport
+"-----------------------------------------------------------------------------
+"------------------------ END OF FRUGALWARE BACKPORT -------------------------
+"-----------------------------------------------------------------------------
 
 let g:recent_vim=has('nvim') || v:version > 704
 
@@ -150,7 +154,7 @@ set list
 autocmd InsertLeave * set nopaste " Disable paste mode when leaving insert mode
 set pastetoggle=<leader>p
 
-" Allow saving of files as sudo when I forgot to start vim using sudo.
+" Allow saving of files as sudo when I forgot to start vim as root
 command Sudow w !sudo tee % > /dev/null
 
 " set spell checking for git commit messages
@@ -181,9 +185,9 @@ imap <c-c> <ESC>
 inoremap <expr> <CR> pumvisible() ? "\<C-y>\<C-o>:pc\<CR>" : "\<C-g>u\<CR>"
 
 
-"----------------------------------------------------------------------------
-"------------------------ PLUGINS CONFIGURATION -----------------------------
-"----------------------------------------------------------------------------
+"-----------------------------------------------------------------------------
+"------------------------ PLUGINS CONFIGURATION ------------------------------
+"-----------------------------------------------------------------------------
 
 " plugin taglist
 nnoremap <silent> <F2> :TagbarToggle<CR>
@@ -239,11 +243,10 @@ endif
 let g:jedi#auto_vim_configuration = 0
 
 " configuration for vim-airline plugin
-let g:airline#extensions#tabline#enabled = 1 " list of buffers on top
-let g:airline#extensions#tabline#fnamemod = ':t' " just show filename without path
-"let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
-"let g:airline#extensions#tabline#buffer_idx_mode = 1 " display buffer index
-let g:airline#extensions#tabline#buffer_nr_show = 1 "display buffer index too
+let g:airline#extensions#tabline#enabled = 1        " list of buffers on top
+let g:airline#extensions#tabline#fnamemod = ':t'    " just show filename without path
+"let g:airline#extensions#tabline#tab_nr_type = 2    " splits and tab number
+let g:airline#extensions#tabline#buffer_nr_show = 1 " display buffer index
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
