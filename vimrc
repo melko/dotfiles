@@ -165,17 +165,24 @@ autocmd Filetype gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1
 " Don't move on *
 "nnoremap * *<c-o>
 nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
+
 " highlight when double ckicking with mouse
 " set mouse=a is needed
 " do not use noremap here since we want the same behaviour as *
 map <2-LeftMouse> *
 imap <2-LeftMouse> <c-o>*
+
 " use <leader>+space as shortcut to nohlsearch
 nnoremap <leader><space> :noh<cr>
 
 " handy shortcuts to move between buffers
-nmap <leader><Left> :bprevious<CR>
-nmap <leader><Right> :bnext<CR>
+if g:recent_vim
+	nmap <leader><Left> :CtrlSpaceGoUp<CR>
+	nmap <leader><Right> :CtrlSpaceGoDown<CR>
+else
+	nmap <leader><Left> :bprevious<CR>
+	nmap <leader><Right> :bnext<CR>
+endif
 
 " ESC is so far away
 imap jk <ESC>l
@@ -225,18 +232,25 @@ endif
 if executable('rg')
 	set grepprg=rg\ --vimgrep\ --no-heading
 	command -nargs=+ -complete=file -bar Grep silent! grep! <args>|cwindow|redraw!
+
 	let g:ctrlp_user_command = 'rg --files %s'
 	let g:ctrlp_use_caching = 0
+
+	let g:CtrlSpaceGlobCommand = 'rg --files -g ""'
 " The Silver Searcher
 elseif executable('ag')
 	" Use ag over grep
 	set grepprg=ag\ --nogroup\ --nocolor
 	" Add command :Grep
 	command -nargs=+ -complete=file -bar Grep silent! grep! <args>|cwindow|redraw!
+
 	" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
 	let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 	" ag is fast enough that CtrlP doesn't need to cache
 	let g:ctrlp_use_caching = 0
+
+	" use ag in ctrlspace
+	let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
 endif
 
 " silly jedi-vim trying to guess what is the best for me
