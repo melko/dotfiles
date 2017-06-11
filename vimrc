@@ -107,6 +107,8 @@ Plug 'tomasr/molokai'
 Plug 'vim-syntastic/syntastic', Cond(v:version > 704)
 Plug 'majutsushi/tagbar', Cond(v:version > 704)
 Plug 'SirVer/ultisnips', Cond(v:version > 704)
+"Plug 'bling/vim-bufferline'
+Plug 'vim-ctrlspace/vim-ctrlspace'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'honza/vim-snippets'
@@ -230,8 +232,11 @@ endif
 let g:jedi#auto_vim_configuration = 0
 
 " configuration for vim-airline plugin
-let g:airline#extensions#tabline#enabled = 1 "list of buffers on top
+let g:airline#extensions#tabline#enabled = 1 " list of buffers on top
 let g:airline#extensions#tabline#fnamemod = ':t' " just show filename without path
+"let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+"let g:airline#extensions#tabline#buffer_idx_mode = 1 " display buffer index
+let g:airline#extensions#tabline#buffer_nr_show = 1 "display buffer index too
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
