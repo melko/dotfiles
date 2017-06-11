@@ -83,7 +83,9 @@ endif
 
 " end of frugalware backport
 
-if v:version > 704
+let g:recent_vim=has('nvim') || v:version > 704
+
+if g:recent_vim
 	set colorcolumn=95 " 95-character line coloring
 	" folding
 	set foldmethod=syntax " syntax option is slow with large files, set it by hand when needed
@@ -102,24 +104,24 @@ function! Cond(cond, ...)
 	return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-Plug 'davidhalter/jedi-vim', Cond(v:version > 704)
+Plug 'davidhalter/jedi-vim', Cond(g:recent_vim)
 Plug 'tomasr/molokai'
-Plug 'vim-syntastic/syntastic', Cond(v:version > 704)
-Plug 'majutsushi/tagbar', Cond(v:version > 704)
-Plug 'SirVer/ultisnips', Cond(v:version > 704)
+Plug 'vim-syntastic/syntastic', Cond(g:recent_vim)
+Plug 'majutsushi/tagbar', Cond(g:recent_vim)
+Plug 'SirVer/ultisnips', Cond(g:recent_vim)
 "Plug 'bling/vim-bufferline'
-Plug 'vim-ctrlspace/vim-ctrlspace'
+Plug 'vim-ctrlspace/vim-ctrlspace', Cond(g:recent_vim)
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'honza/vim-snippets'
-Plug 'mhinz/vim-startify', Cond(v:version > 704)
+Plug 'mhinz/vim-startify', Cond(g:recent_vim)
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'thinca/vim-localrc', Cond(v:version > 704)
+Plug 'thinca/vim-localrc', Cond(g:recent_vim)
 "Plug 'tpope/vim-sleuth'
 Plug 'ciaranm/detectindent'
-Plug 'jszakmeister/vim-togglecursor', Cond(v:version > 704)
+Plug 'jszakmeister/vim-togglecursor', Cond(g:recent_vim)
 call plug#end()
 
 colorscheme molokai
@@ -177,6 +179,11 @@ imap <c-c> <ESC>
 
 " close annoying preview window when done
 inoremap <expr> <CR> pumvisible() ? "\<C-y>\<C-o>:pc\<CR>" : "\<C-g>u\<CR>"
+
+
+"----------------------------------------------------------------------------
+"------------------------ PLUGINS CONFIGURATION -----------------------------
+"----------------------------------------------------------------------------
 
 " plugin taglist
 nnoremap <silent> <F2> :TagbarToggle<CR>
