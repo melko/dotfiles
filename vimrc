@@ -31,6 +31,11 @@ if has('mouse')
 	set mouse=nv
 endif
 
+" mouse right-click opens a popup menu
+if has("gui_running")
+	set mousemodel=popup_setpos
+endif
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
