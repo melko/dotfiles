@@ -338,7 +338,7 @@ you should place your code here."
   (setq-default evil-escape-key-sequence "jk")
   (setq-default tab-width 8)
   (setq-default indent-tabs-mode t) ;use tab instead of space
-  (setq-default whitespace-style '(face tabs trailing lines space-before-tab indentation empty space-after-tab tab-mark))
+  (setq-default whitespace-style '(face tabs trailing space-before-tab indentation empty space-after-tab tab-mark))
   (global-whitespace-mode 1)
 
   (setq helm-boring-buffer-regexp-list spacemacs-useless-buffers-regexp)
