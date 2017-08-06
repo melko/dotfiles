@@ -41,6 +41,7 @@ values."
               haskell-enable-hindent-style "johan-tibell"
               haskell-completion-backend 'intero)
      helm
+     html
      python
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
@@ -52,7 +53,7 @@ values."
      git
      (c-c++ :variables c-c++-enable-clang-support t)
      ;; markdown
-     ;; org
+     org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -344,6 +345,8 @@ you should place your code here."
   (setq helm-boring-buffer-regexp-list spacemacs-useless-buffers-regexp)
   (dtrt-indent-mode)
   (dtrt-indent-adapt)
+
+  (setq org-agenda-files '("~/org"))
 
   (spacemacs/set-leader-keys "<left>" 'previous-buffer)
   (spacemacs/set-leader-keys "<right>" 'next-buffer)
