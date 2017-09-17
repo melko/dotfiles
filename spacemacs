@@ -42,6 +42,7 @@ values."
               haskell-completion-backend 'intero)
      helm
      html
+     markdown
      python
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
@@ -314,6 +315,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
 
   (setq-default dotspacemacs-line-numbers t)
+  (setq-default dotspacemacs-major-mode-leader-key "\\")
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
   (setq-default c-default-style
                 '((c-mode . "linux")
@@ -331,6 +333,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; https://github.com/syl20bnr/spacemacs/issues/9549
+  (require 'helm-bookmark)
 
   (add-to-list 'exec-path "~/.local/bin")
   (setq-default case-fold-search nil)
@@ -338,7 +342,7 @@ you should place your code here."
   (setq-default evil-ex-search-vim-style-regexp t)
   (setq-default evil-escape-key-sequence "jk")
   (setq-default tab-width 8)
-  (setq-default indent-tabs-mode t) ;use tab instead of space
+  ;;(setq-default indent-tabs-mode t) ;use tab instead of space
   (setq-default whitespace-style '(face tabs trailing space-before-tab indentation empty space-after-tab tab-mark))
   (global-whitespace-mode 1)
 
@@ -350,6 +354,17 @@ you should place your code here."
 
   (spacemacs/set-leader-keys "<left>" 'previous-buffer)
   (spacemacs/set-leader-keys "<right>" 'next-buffer)
+
+  (defun eval-and-replace ()
+    "Replace the preceding Sexp with its value."
+    (interactive)
+    (backward-kill-sexp)
+    (condition-case nil
+        (prin1 (eval (read (current-kill 0)))
+               (current-buffer))
+      (error (message "Invalid expression")
+             (insert (current-kill 0)))))
+  (spacemacs/set-leader-keys "oe" 'eval-and-replace)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
