@@ -129,7 +129,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-localrc', Cond(g:recent_vim)
 "Plug 'tpope/vim-sleuth'
-Plug 'ciaranm/detectindent'
+Plug 'roryokane/detectindent'
 Plug 'jszakmeister/vim-togglecursor', Cond(g:recent_vim)
 call plug#end()
 
@@ -212,6 +212,7 @@ let g:syntastic_mode_map = {'mode': 'passive'}
 nnoremap <silent> <leader>cc :SyntasticCheck<CR>
 
 " plugin detectindent
+let g:detectindent_preferred_indent = 8
 augroup detectindent
 	autocmd BufReadPost * :DetectIndent
 augroup END
