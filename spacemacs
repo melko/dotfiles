@@ -54,7 +54,9 @@ values."
      git
      (c-c++ :variables c-c++-enable-clang-support t)
      ;; markdown
-     org
+     (org :variables
+          org-enable-reveal-js-support t
+          org-enable-github-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -354,6 +356,9 @@ you should place your code here."
 
   (spacemacs/set-leader-keys "<left>" 'previous-buffer)
   (spacemacs/set-leader-keys "<right>" 'next-buffer)
+
+  (setq-default git-commit-style-convention-checks
+                '(overlong-summary-line non-empty-second-line))
 
   (defun eval-and-replace ()
     "Replace the preceding Sexp with its value."
