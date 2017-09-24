@@ -42,7 +42,8 @@ if &t_Co > 2 || has("gui_running")
 	syntax on
 	set hlsearch
 	set bg=dark
-	set guifont=Source\ Code\ Pro\ Medium\ 11
+	"set guifont=Source\ Code\ Pro\ Medium\ 11
+	set guifont=Hack\ 11
 endif
 
 " Only do this part when compiled with support for autocommands.
