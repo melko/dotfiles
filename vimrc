@@ -1,25 +1,112 @@
-"-----------------------------------------------------------------------------
-"----------------- CHANGES BACKPORTED FROM FRUGALWARE VIMRC ------------------
-"-----------------------------------------------------------------------------
+" before starting set every option to default value
+" since distros usually like to have a default vimrc
+" which could cause different setups
+set all&
+
+let g:recent_vim=has('nvim') || v:version > 704
 
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
+set fileencodings=ucs-bom,utf-8,default,latin1
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
+" Suffixes that get lower priority when doing tab completion for filenames.
+" These are files we are not likely to want to edit or read.
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc,.png,.jpg
+
+set undolevels=1000
 set backupext=.bak      " change the default backup extension from ~ to .bak
 set nobackup            " do not keep a backup file, use versions instead
 "set patchmode=.orig     " backup the original file the first time it is modified
+
 set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
 set scrolloff=2         " keep at least two lines of context
+set hidden              " allows buffers to be hidden
 
-" Don't use Ex mode, use Q for formatting
-map Q gq
+set t_Co=256
+set synmaxcol=800       " Don't try to highlight lines longer than 800 characters.
+set lazyredraw          " Don't update the display while executing macros
+set updatetime=500      " refresh time
+
+set wildmode=longest,list,full
+set wildmenu            " Make the command line completion better
+set completeopt=menuone,preview
+
+set ls=2                " always shown statusbar
+set number              " enable row numbers
+set cursorline          " highlight the screen line of the cursor
+set virtualedit=block   " Allow the cursor to go in to invalid places in visual block mode
+
+set splitright splitbelow " put the new window right/below the current one
+
+set tags=./tags,tags;   " search for the tags file in the current folder and beyond
+
+" highlight tabs and trailing spaces
+highlight SpecialKey ctermfg=DarkRed guifg=DarkRed
+set listchars=tab:>-,trail:~
+set list
+
+if g:recent_vim
+	set colorcolumn=95 " 95-character line coloring
+	" folding
+	set foldmethod=syntax " syntax option is slow with large files, set it by hand when needed
+	set foldlevel=99
+
+	" persistent undo
+	set undodir=~/.vim/undodir
+	set undofile
+endif
+
+autocmd InsertLeave * set nopaste " Disable paste mode when leaving insert mode
+set pastetoggle=<leader>p
+
+" use <leader>+space as shortcut to nohlsearch
+nnoremap <leader><space> :noh<cr>
+
+" Don't move on *
+"nnoremap * *<c-o>
+nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
+
+" highlight when double ckicking with mouse
+" set mouse=a is needed
+" do not use noremap here since we want the same behaviour as *
+map <2-LeftMouse> *
+imap <2-LeftMouse> <c-o>*
+
+" ESC is so far away
+imap jk <ESC>l
+imap <c-c> <ESC>
+
+" handy shortcuts to move between buffers
+if g:recent_vim
+	nmap <leader><Left> :CtrlSpaceGoUp<CR>
+	nmap <leader><Right> :CtrlSpaceGoDown<CR>
+else
+	nmap <leader><Left> :bprevious<CR>
+	nmap <leader><Right> :bnext<CR>
+endif
+
+" set spell checking for git commit messages
+autocmd Filetype gitcommit setlocal spell
+" always set the cursor at the first line when editing git commit messages
+autocmd Filetype gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" Allow saving of files as sudo when I forgot to start vim as root
+command Sudow w !sudo tee % > /dev/null
+
+" close annoying preview window when done
+inoremap <expr> <CR> pumvisible() ? "\<C-y>\<C-o>:pc\<CR>" : "\<C-g>u\<CR>"
+
+"-----------------------------------------------------------------------------
+"----------------- CHANGES BACKPORTED FROM FRUGALWARE VIMRC ------------------
+"-----------------------------------------------------------------------------
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -93,19 +180,6 @@ endif
 "------------------------ END OF FRUGALWARE BACKPORT -------------------------
 "-----------------------------------------------------------------------------
 
-let g:recent_vim=has('nvim') || v:version > 704
-
-if g:recent_vim
-	set colorcolumn=95 " 95-character line coloring
-	" folding
-	set foldmethod=syntax " syntax option is slow with large files, set it by hand when needed
-	set foldlevel=99
-
-	" persistent undo
-	set undodir=~/.vim/undodir
-	set undofile
-endif
-
 " vim-plug
 call plug#begin('~/.vim/plugged')
 " helper function
@@ -134,73 +208,11 @@ Plug 'roryokane/detectindent'
 Plug 'jszakmeister/vim-togglecursor', Cond(g:recent_vim)
 call plug#end()
 
-colorscheme molokai
-set lazyredraw " Don't update the display while executing macros
-set updatetime=500 " refresh time
-set virtualedit=block " Allow the cursor to go in to invalid places in visual block mode
-set wildmode=longest,list,full
-set wildmenu " Make the command line completion better
-set completeopt=menuone,preview
-set t_Co=256
-set synmaxcol=800 " Don't try to highlight lines longer than 800 characters.
-set hidden " allows buffers to be hidden
-set ls=2 " always shown statusbar
-set number " enable row numbers
-set cursorline
-set undolevels=1000
-set splitright splitbelow
-set tags=./tags,tags;
-runtime! ftplugin/man.vim " allow to use the :Map command and <leader>K
-
-" highlight tabs and trailing spaces
-highlight SpecialKey ctermfg=DarkRed guifg=DarkRed
-set listchars=tab:>-,trail:~
-set list
-
-autocmd InsertLeave * set nopaste " Disable paste mode when leaving insert mode
-set pastetoggle=<leader>p
-
-" Allow saving of files as sudo when I forgot to start vim as root
-command Sudow w !sudo tee % > /dev/null
-
-" set spell checking for git commit messages
-autocmd Filetype gitcommit setlocal spell
-" always set the cursor at the first line when editing git commit messages
-autocmd Filetype gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
-" Don't move on *
-"nnoremap * *<c-o>
-nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
-
-" highlight when double ckicking with mouse
-" set mouse=a is needed
-" do not use noremap here since we want the same behaviour as *
-map <2-LeftMouse> *
-imap <2-LeftMouse> <c-o>*
-
-" use <leader>+space as shortcut to nohlsearch
-nnoremap <leader><space> :noh<cr>
-
-" handy shortcuts to move between buffers
-if g:recent_vim
-	nmap <leader><Left> :CtrlSpaceGoUp<CR>
-	nmap <leader><Right> :CtrlSpaceGoDown<CR>
-else
-	nmap <leader><Left> :bprevious<CR>
-	nmap <leader><Right> :bnext<CR>
-endif
-
-" ESC is so far away
-imap jk <ESC>l
-imap <c-c> <ESC>
-
-" close annoying preview window when done
-inoremap <expr> <CR> pumvisible() ? "\<C-y>\<C-o>:pc\<CR>" : "\<C-g>u\<CR>"
-
-
 "-----------------------------------------------------------------------------
 "------------------------ PLUGINS CONFIGURATION ------------------------------
 "-----------------------------------------------------------------------------
+
+colorscheme molokai " here since molokai is installed with vim-plug
 
 " plugin taglist
 nnoremap <silent> <F2> :TagbarToggle<CR>
