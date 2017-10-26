@@ -208,6 +208,7 @@ Plug 'thinca/vim-localrc', Cond(g:recent_vim)
 Plug 'roryokane/detectindent'
 Plug 'jszakmeister/vim-togglecursor', Cond(g:recent_vim)
 Plug 'haya14busa/incsearch.vim'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 "-----------------------------------------------------------------------------
