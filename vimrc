@@ -207,6 +207,7 @@ Plug 'thinca/vim-localrc', Cond(g:recent_vim)
 "Plug 'tpope/vim-sleuth'
 Plug 'roryokane/detectindent'
 Plug 'jszakmeister/vim-togglecursor', Cond(g:recent_vim)
+Plug 'haya14busa/incsearch.vim'
 call plug#end()
 
 "-----------------------------------------------------------------------------
@@ -296,6 +297,11 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
+
+" incsearch.vim configuration
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " avoid slow down for huge files because of syntax folding
 " actually I don't even use folding that much
