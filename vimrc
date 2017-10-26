@@ -209,6 +209,7 @@ Plug 'roryokane/detectindent'
 Plug 'jszakmeister/vim-togglecursor', Cond(g:recent_vim)
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'unblevable/quick-scope'
 call plug#end()
 
 "-----------------------------------------------------------------------------
@@ -303,6 +304,10 @@ let g:airline_symbols.whitespace = 'Ξ'
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+
+" quick-scope configuration
+" highlight just on keypress
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " avoid slow down for huge files because of syntax folding
 " actually I don't even use folding that much
