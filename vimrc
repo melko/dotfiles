@@ -141,6 +141,7 @@ if has("autocmd")
 	" 'cindent' is on in C files, etc.
 	" Also load indent files, to automatically do language-dependent indenting.
 	filetype plugin indent on
+	set omnifunc=syntaxcomplete#Complete
 
 	" Put these in an autocmd group, so that we can delete them easily.
 	augroup vimrcEx
