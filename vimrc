@@ -88,6 +88,8 @@ imap <c-c> <ESC>
 if g:recent_vim
 	nmap <leader><Left> :CtrlSpaceGoUp<CR>
 	nmap <leader><Right> :CtrlSpaceGoDown<CR>
+	nmap <leader><leader><Left> :bprevious<CR>
+	nmap <leader><leader><Right> :bnext<CR>
 else
 	nmap <leader><Left> :bprevious<CR>
 	nmap <leader><Right> :bnext<CR>
