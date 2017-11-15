@@ -81,8 +81,8 @@ map <2-LeftMouse> *
 imap <2-LeftMouse> <c-o>*
 
 " ESC is so far away
-imap jk <ESC>l
-imap <c-c> <ESC>
+inoremap jk <ESC>l
+inoremap <c-c> <ESC>
 
 " handy shortcuts to move between buffers
 if g:recent_vim
