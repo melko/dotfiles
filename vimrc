@@ -278,6 +278,10 @@ endif
 
 " silly jedi-vim trying to guess what is the best for me
 let g:jedi#auto_vim_configuration = 0
+" with some modules (e.g. MyHDL) completion is really slow
+let g:jedi#popup_on_dot = 0
+set noshowmode " needed to show signatures in the status bar
+let g:jedi#show_call_signatures = 2 " show signatures in the status bar instead of popup
 
 " configuration for vim-airline plugin
 let g:airline#extensions#tabline#enabled = 1        " list of buffers on top
