@@ -84,6 +84,9 @@ imap <2-LeftMouse> <c-o>*
 inoremap jk <ESC>l
 inoremap <c-c> <ESC>
 
+" wrap cursor when moving past begin/end of a line
+set whichwrap+=<,>,h,l
+
 " handy shortcuts to move between buffers
 if g:recent_vim
 	nmap <leader><Left> :CtrlSpaceGoUp<CR>
