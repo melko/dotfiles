@@ -215,6 +215,8 @@ Plug 'jszakmeister/vim-togglecursor', Cond(g:recent_vim)
 Plug 'haya14busa/incsearch.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'unblevable/quick-scope'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
 call plug#end()
 
 "-----------------------------------------------------------------------------
@@ -222,6 +224,10 @@ call plug#end()
 "-----------------------------------------------------------------------------
 
 colorscheme molokai " here since molokai is installed with vim-plug
+
+" vim-gutentags
+let g:gutentags_enabled = 0 " do not autoenable for now
+let g:gutentags_define_advanced_commands = 1
 
 " plugin taglist
 nnoremap <silent> <F2> :TagbarToggle<CR>
