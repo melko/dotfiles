@@ -226,7 +226,9 @@ call plug#end()
 colorscheme molokai " here since molokai is installed with vim-plug
 
 " vim-gutentags
-let g:gutentags_enabled = 0 " do not autoenable for now
+"let g:gutentags_enabled = 0 " do not autoenable for now
+let g:gutentags_project_root = ['.guten']
+let g:gutentags_add_default_project_roots = 0
 let g:gutentags_define_advanced_commands = 1
 
 " plugin taglist
