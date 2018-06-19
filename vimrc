@@ -224,6 +224,7 @@ call plug#end()
 "-----------------------------------------------------------------------------
 
 colorscheme molokai " here since molokai is installed with vim-plug
+highlight MatchParen ctermfg=166 ctermbg=0
 
 " vim-gutentags
 "let g:gutentags_enabled = 0 " do not autoenable for now
