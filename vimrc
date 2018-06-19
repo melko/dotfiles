@@ -206,16 +206,16 @@ Plug 'tpope/vim-fugitive'
 Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-startify', Cond(g:recent_vim)
 Plug 'sheerun/vim-polyglot'
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter', Cond(g:recent_vim)
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-localrc', Cond(g:recent_vim)
 "Plug 'tpope/vim-sleuth'
 Plug 'roryokane/detectindent'
 Plug 'jszakmeister/vim-togglecursor', Cond(g:recent_vim)
-Plug 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim', Cond(g:recent_vim)
 Plug 'easymotion/vim-easymotion'
-Plug 'unblevable/quick-scope'
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'unblevable/quick-scope', Cond(g:recent_vim)
+Plug 'ludovicchabant/vim-gutentags', Cond(g:recent_vim)
 Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
 call plug#end()
 
@@ -318,9 +318,11 @@ let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " incsearch.vim configuration
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+if g:recent_vim
+	map / <Plug>(incsearch-forward)
+	map ? <Plug>(incsearch-backward)
+	map g/ <Plug>(incsearch-stay)
+endif
 
 " quick-scope configuration
 " highlight just on keypress
