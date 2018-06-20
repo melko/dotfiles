@@ -197,7 +197,7 @@ function! Cond(cond, ...)
 	return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
 endfunction
 
-Plug 'davidhalter/jedi-vim', Cond(g:recent_vim)
+Plug 'maralla/completor.vim', Cond(g:recent_vim)
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'vim-syntastic/syntastic', Cond(g:recent_vim)
 Plug 'majutsushi/tagbar', Cond(g:recent_vim)
