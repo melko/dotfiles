@@ -84,6 +84,9 @@ imap <2-LeftMouse> <c-o>*
 inoremap jk <ESC>l
 inoremap <c-c> <ESC>
 
+noremap <c-e> 3<c-e>
+noremap <c-y> 3<c-y>
+
 " wrap cursor when moving past begin/end of a line
 set whichwrap+=<,>,h,l
 
