@@ -195,7 +195,7 @@ function! Cond(cond, ...)
 endfunction
 
 Plug 'davidhalter/jedi-vim', Cond(g:recent_vim)
-Plug 'tomasr/molokai'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'vim-syntastic/syntastic', Cond(g:recent_vim)
 Plug 'majutsushi/tagbar', Cond(g:recent_vim)
 Plug 'SirVer/ultisnips', Cond(g:recent_vim)
@@ -223,8 +223,8 @@ call plug#end()
 "------------------------ PLUGINS CONFIGURATION ------------------------------
 "-----------------------------------------------------------------------------
 
-colorscheme molokai " here since molokai is installed with vim-plug
-highlight MatchParen ctermfg=166 ctermbg=0
+colorscheme molokai " here since it is installed with vim-plug
+highlight MatchParen ctermfg=166 ctermbg=52
 
 " vim-gutentags
 "let g:gutentags_enabled = 0 " do not autoenable for now
