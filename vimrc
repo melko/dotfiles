@@ -50,7 +50,7 @@ set tags=./tags,tags;   " search for the tags file in the current folder and bey
 
 " highlight tabs and trailing spaces
 highlight SpecialKey ctermfg=DarkRed guifg=DarkRed
-set listchars=tab:>-,trail:~
+set listchars=tab:>_,trail:~
 set list
 
 if g:recent_vim
