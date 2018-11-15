@@ -53,16 +53,14 @@ highlight SpecialKey ctermfg=DarkRed guifg=DarkRed
 set listchars=tab:>_,trail:~
 set list
 
-if g:recent_vim
-	set colorcolumn=95 " 95-character line coloring
-	" folding
-	set foldmethod=syntax " syntax option is slow with large files, set it by hand when needed
-	set foldlevel=99
+set colorcolumn=95 " 95-character line coloring
+" folding
+set foldmethod=syntax " syntax option is slow with large files, set it by hand when needed
+set foldlevel=99
 
-	" persistent undo
-	set undodir=~/.vim/undodir
-	set undofile
-endif
+" persistent undo
+set undodir=~/.vim/undodir
+set undofile
 
 autocmd InsertLeave * set nopaste " Disable paste mode when leaving insert mode
 set pastetoggle=<leader>p
