@@ -227,6 +227,9 @@ call plug#end()
 colorscheme molokai " here since it is installed with vim-plug
 highlight MatchParen ctermfg=166 ctermbg=52
 
+" CtrlP
+let g:ctrlp_root_markers = ['.guten']
+
 " vim-gutentags
 "let g:gutentags_enabled = 0 " do not autoenable for now
 let g:gutentags_project_root = ['.guten']
