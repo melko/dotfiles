@@ -227,6 +227,10 @@ call plug#end()
 colorscheme molokai " here since it is installed with vim-plug
 highlight MatchParen ctermfg=166 ctermbg=52
 
+if filereadable(expand('~/.vim/startify_bookmarks.vim'))
+	source ~/.vim/startify_bookmarks.vim
+endif
+
 " CtrlP
 let g:ctrlp_root_markers = ['.guten']
 
