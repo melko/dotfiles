@@ -236,21 +236,25 @@ let g:gutentags_project_root = ['.guten']
 let g:gutentags_add_default_project_roots = 0
 let g:gutentags_define_advanced_commands = 1
 
+
 " plugin taglist
 nnoremap <silent> <F2> :TagbarToggle<CR>
 nnoremap <silent> <F3> :TagbarOpenAutoClose<CR>
 nnoremap <silent> <F4> :Explore<CR>
+
 
 "plugin syntastic
 "let g:syntastic_mode_map['mode'] = 'passive'
 let g:syntastic_mode_map = {'mode': 'passive'}
 nnoremap <silent> <leader>cc :SyntasticCheck<CR>
 
+
 " plugin detectindent
 let g:detectindent_preferred_indent = 8
 augroup detectindent
 	autocmd BufReadPost * :DetectIndent
 augroup END
+
 
 " cscope
 if has("cscope")
@@ -268,6 +272,7 @@ if has("cscope")
 
 	set cscopetag
 endif
+
 
 " ripgrep
 if executable('rg')
@@ -294,12 +299,14 @@ elseif executable('ag')
 	let g:CtrlSpaceGlobCommand = 'ag -l --nocolor -g ""'
 endif
 
+
 " silly jedi-vim trying to guess what is the best for me
 let g:jedi#auto_vim_configuration = 0
 " with some modules (e.g. MyHDL) completion is really slow
 let g:jedi#popup_on_dot = 0
 set noshowmode " needed to show signatures in the status bar
 let g:jedi#show_call_signatures = 2 " show signatures in the status bar instead of popup
+
 
 " configuration for vim-airline plugin
 let g:airline#extensions#tabline#enabled = 1        " list of buffers on top
@@ -322,6 +329,7 @@ let g:airline_symbols.paste = 'Þ'
 let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
+
 " incsearch.vim configuration
 if g:recent_vim
 	map / <Plug>(incsearch-forward)
@@ -329,9 +337,11 @@ if g:recent_vim
 	map g/ <Plug>(incsearch-stay)
 endif
 
+
 " quick-scope configuration
 " highlight just on keypress
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+
 
 " avoid slow down for huge files because of syntax folding
 " actually I don't even use folding that much
