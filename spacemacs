@@ -465,6 +465,12 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
+
+  ;; include underscore in word motions
+  (add-hook 'prog-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+  ;; DO NOT WRAP COMMENTS IN VHDL MODE
+  (setq-default vhdl-end-comment-column 500)
+
   (setq-default c-default-style
                 '((c-mode . "linux")
                   (c++-mode . "linux")
@@ -490,6 +496,10 @@ before packages are loaded."
   ;; https://github.com/syl20bnr/spacemacs/issues/9549
   ;;(require 'helm-bookmark)
 
+  ;; prefer original evil ones to spacemacs/enter-ahs-forward
+  ;;(define-key evil-motion-state-map "*" 'evil-ex-search-word-forward)
+  ;;(define-key evil-motion-state-map "#" 'evil-ex-search-word-backward)
+
   (add-to-list 'exec-path "~/.local/bin")
   (setq-default delete-by-moving-to-trash nil)
   (setq-default case-fold-search nil)
@@ -501,6 +511,8 @@ before packages are loaded."
   (setq-default whitespace-style '(face tabs trailing space-before-tab indentation empty space-after-tab tab-mark))
   (global-whitespace-mode 1)
 
+
+  (push "*.+*" spacemacs-useless-buffers-regexp)
   (setq helm-boring-buffer-regexp-list spacemacs-useless-buffers-regexp)
   (dtrt-indent-mode)
   (dtrt-indent-adapt)
