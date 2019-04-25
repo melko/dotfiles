@@ -477,6 +477,15 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
                   (java-mode . "java")
                   (awk-mode . "awk")
                   (other . "gnu")))
+
+  ;; enable modeline icons if GUI frame is detected
+  ;; this is useful when running emacs as daemon
+  (add-hook 'after-make-frame-functions
+            (lambda (_frame)
+              (with-selected-frame _frame
+                (if (display-graphic-p)
+                    (setq doom-modeline-icon t)
+                  (setq doom-modeline-icon nil)))))
   )
 
 (defun dotspacemacs/user-load ()
