@@ -201,7 +201,6 @@ Plug 'vim-syntastic/syntastic', Cond(g:recent_vim)
 Plug 'majutsushi/tagbar', Cond(g:recent_vim)
 Plug 'SirVer/ultisnips', Cond(g:recent_vim)
 "Plug 'bling/vim-bufferline'
-Plug 'vim-ctrlspace/vim-ctrlspace', Cond(g:recent_vim)
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'honza/vim-snippets'
@@ -212,12 +211,14 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-localrc', Cond(g:recent_vim)
 "Plug 'tpope/vim-sleuth'
 Plug 'roryokane/detectindent'
+Plug 'vim-ctrlspace/vim-ctrlspace', Cond(g:recent_vim)
 Plug 'jszakmeister/vim-togglecursor', Cond(g:recent_vim)
 Plug 'haya14busa/incsearch.vim', Cond(g:recent_vim)
 Plug 'easymotion/vim-easymotion'
 Plug 'unblevable/quick-scope', Cond(g:recent_vim)
 Plug 'ludovicchabant/vim-gutentags', Cond(g:recent_vim)
 Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
+Plug 'suoto/vim-hdl'
 call plug#end()
 
 "-----------------------------------------------------------------------------
@@ -233,6 +234,21 @@ endif
 
 " CtrlP
 let g:ctrlp_root_markers = ['.guten']
+
+" CtrlSpace
+let g:CtrlSpaceUseArrowsInTerm = 1
+let g:CtrlSpaceProjectRootMarkers = ['.git', '.hg', '.svn', '.bzr', '_darcs', 'CVS','.guten']
+
+" completor
+" use tab to select completion
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " vim-gutentags
 "let g:gutentags_enabled = 0 " do not autoenable for now
