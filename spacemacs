@@ -55,6 +55,7 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t)
      ;; better-defaults
      ;; cscope
+     (cmake :variables cmake-enable-cmake-ide-support t)
      gtags
      emacs-lisp
      git
