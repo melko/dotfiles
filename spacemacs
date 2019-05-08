@@ -1,4 +1,4 @@
-;; -*- mode: emacs-lisp -*-
+;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -534,6 +534,13 @@ before packages are loaded."
 
   (setq-default git-commit-style-convention-checks
                 '(overlong-summary-line non-empty-second-line))
+
+  (defun helm-mini-unfiltered ()
+    "List all buffer in helm-mini regardless of filters"
+    (interactive)
+    (let ((helm-boring-buffer-regexp-list nil))
+      (helm-mini)))
+  (spacemacs/set-leader-keys "bl" 'helm-mini-unfiltered)
 
   (defun eval-and-replace ()
     "Replace the preceding Sexp with its value."
