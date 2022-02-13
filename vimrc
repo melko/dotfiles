@@ -208,7 +208,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-startify', Cond(g:recent_vim)
-Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot', Cond(g:recent_vim)
 Plug 'airblade/vim-gitgutter', Cond(g:recent_vim)
 Plug 'mhinz/vim-signify', Cond(g:recent_vim)
 Plug 'ctrlpvim/ctrlp.vim'
