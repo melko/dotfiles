@@ -232,6 +232,10 @@ call plug#end()
 colorscheme molokai " here since it is installed with vim-plug
 highlight MatchParen ctermfg=166 ctermbg=52
 
+if g:recent_vim
+	packadd! matchit
+endif
+
 if filereadable(expand('~/.vim/startify_bookmarks.vim'))
 	source ~/.vim/startify_bookmarks.vim
 endif
