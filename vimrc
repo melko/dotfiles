@@ -210,6 +210,7 @@ Plug 'honza/vim-snippets'
 Plug 'mhinz/vim-startify', Cond(g:recent_vim)
 Plug 'sheerun/vim-polyglot'
 Plug 'airblade/vim-gitgutter', Cond(g:recent_vim)
+Plug 'mhinz/vim-signify', Cond(g:recent_vim)
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'thinca/vim-localrc', Cond(g:recent_vim)
 "Plug 'tpope/vim-sleuth'
@@ -277,6 +278,11 @@ let g:detectindent_preferred_indent = 8
 augroup detectindent
 	autocmd BufReadPost * :DetectIndent
 augroup END
+
+
+" plugin vim-signify
+let g:signify_vcs_list = [ 'cvs', 'svn' ]
+let g:signify_realtime = 0
 
 
 " cscope
