@@ -212,6 +212,7 @@ Plug 'sheerun/vim-polyglot', Cond(g:recent_vim)
 Plug 'airblade/vim-gitgutter', Cond(g:recent_vim)
 Plug 'mhinz/vim-signify', Cond(g:recent_vim)
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'thinca/vim-localrc', Cond(g:recent_vim)
 "Plug 'tpope/vim-sleuth'
 Plug 'roryokane/detectindent'
@@ -241,7 +242,9 @@ if filereadable(expand('~/.vim/startify_bookmarks.vim'))
 endif
 
 " CtrlP
+let g:ctrlp_lazy_update = 350 "delay to prevent extra search
 let g:ctrlp_root_markers = ['.guten']
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } "faster match
 
 " CtrlSpace
 let g:CtrlSpaceUseArrowsInTerm = 1
