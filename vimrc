@@ -315,6 +315,14 @@ if has("cscope")
 	autocmd BufEnter /* call LoadCscope()
 
 	set cscopetag
+
+	"find all references of symbol
+	nmap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+	"find global definition
+	nmap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+	"find all calls to function
+	nmap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+
 endif
 
 
