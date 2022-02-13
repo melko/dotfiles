@@ -266,11 +266,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 let g:gutentags_project_root = ['.guten']
 let g:gutentags_add_default_project_roots = 0
 let g:gutentags_define_advanced_commands = 1
-"if executable('gtags-cscope')
-"	let g:gutentags_modules = ['gtags_cscope']
 if executable('cscope')
 	let g:gutentags_modules = ['cscope']
 	let g:gutentags_file_list_command = "find . -type f -exec grep -Iq . {} \\; -print" "avoid finding non-text files
+elseif executable('gtags-cscope')
+	let g:gutentags_modules = ['gtags_cscope']
 else
 	let g:gutentags_modules = ['ctags']
 endif
