@@ -297,6 +297,7 @@ augroup END
 " plugin vim-signify
 let g:signify_vcs_list = [ 'cvs', 'svn' ]
 let g:signify_realtime = 0
+let g:signify_skip = { 'vcs': { 'deny': ['git'] } }
 
 
 " cscope
