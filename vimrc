@@ -245,6 +245,7 @@ endif
 let g:ctrlp_lazy_update = 350 "delay to prevent extra search
 let g:ctrlp_root_markers = ['.guten']
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } "faster match
+nmap <C-s>t :CtrlPTag<CR>
 
 " CtrlSpace
 let g:CtrlSpaceUseArrowsInTerm = 1
@@ -267,12 +268,10 @@ let g:gutentags_project_root = ['.guten']
 let g:gutentags_add_default_project_roots = 0
 let g:gutentags_define_advanced_commands = 1
 if executable('cscope')
-	let g:gutentags_modules = ['cscope']
+	let g:gutentags_modules = ['cscope', 'ctags']
 	let g:gutentags_file_list_command = "find . -type f -exec grep -Iq . {} \\; -print" "avoid finding non-text files
 elseif executable('gtags-cscope')
-	let g:gutentags_modules = ['gtags_cscope']
-else
-	let g:gutentags_modules = ['ctags']
+	let g:gutentags_modules = ['gtags_cscope', 'ctags']
 endif
 
 
