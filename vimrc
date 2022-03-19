@@ -230,7 +230,14 @@ call plug#end()
 "------------------------ PLUGINS CONFIGURATION ------------------------------
 "-----------------------------------------------------------------------------
 
-colorscheme molokai " here since it is installed with vim-plug
+
+if g:recent_vim
+	let g:gruvbox_bold = 1
+	let g:gruvbox_italic = 1
+	let g:gruvbox_italicize_strings = 1
+endif
+
+colorscheme gruvbox " here since it is installed with vim-plug
 highlight MatchParen ctermfg=166 ctermbg=52
 
 if g:recent_vim
