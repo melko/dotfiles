@@ -1,7 +1,9 @@
 " before starting set every option to default value
 " since distros usually like to have a default vimrc
 " which could cause different setups
-set all&
+if !has('nvim')
+	set all&
+endif
 
 let g:recent_vim=has('nvim') || v:version > 704
 
@@ -63,6 +65,9 @@ if g:recent_vim
 	" persistent undo
 	set undodir=~/.vim/undodir
 	set undofile
+endif
+if has('nvim')
+	set undodir=~/.local/share/nvim/undodir
 endif
 
 autocmd InsertLeave * set nopaste " Disable paste mode when leaving insert mode
@@ -240,7 +245,7 @@ endif
 colorscheme gruvbox " here since it is installed with vim-plug
 highlight MatchParen ctermfg=166 ctermbg=52
 
-if g:recent_vim
+if g:recent_vim && !has('nvim')
 	packadd! matchit
 endif
 
