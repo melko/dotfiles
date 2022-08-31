@@ -39,7 +39,7 @@ set updatetime=500      " refresh time
 
 set wildmode=longest,list,full
 set wildmenu            " Make the command line completion better
-set completeopt=menuone,preview
+set completeopt=menuone,preview,noselect
 
 set ls=2                " always shown statusbar
 set number              " enable row numbers
@@ -236,7 +236,8 @@ call plug#end()
 "-----------------------------------------------------------------------------
 
 
-if g:recent_vim
+call system("infocmp $TERM | grep sitm")
+if g:recent_vim && v:shell_error == 0
 	let g:gruvbox_bold = 1
 	let g:gruvbox_italic = 1
 	let g:gruvbox_italicize_strings = 1
@@ -329,11 +330,11 @@ if has("cscope")
 	set cscopetag
 
 	"find all references of symbol
-	nmap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
+	nnoremap <C-s>s :cs find s <C-R>=expand("<cword>")<CR><CR>
 	"find global definition
-	nmap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
+	nnoremap <C-s>g :cs find g <C-R>=expand("<cword>")<CR><CR>
 	"find all calls to function
-	nmap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
+	nnoremap <C-s>c :cs find c <C-R>=expand("<cword>")<CR><CR>
 
 endif
 
