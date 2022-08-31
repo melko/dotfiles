@@ -229,6 +229,7 @@ Plug 'unblevable/quick-scope', Cond(g:recent_vim)
 Plug 'ludovicchabant/vim-gutentags', Cond(g:recent_vim)
 Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
 Plug 'suoto/vim-hdl'
+Plug 'natebosch/vim-lsc', Cond(g:recent_vim)
 call plug#end()
 
 "-----------------------------------------------------------------------------
@@ -265,10 +266,33 @@ let g:CtrlSpaceUseArrowsInTerm = 1
 let g:CtrlSpaceProjectRootMarkers = ['.git', '.hg', '.svn', '.bzr', '_darcs', 'CVS','.guten']
 
 " completor
+let g:completor_filetype_map = {}
+"let g:completor_blacklist = ['c', 'cpp']
 " use tab to select completion
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+" lsc
+"let g:lsc_enable_autocomplete = v:false
+let g:lsc_server_commands = {}
+
+if executable('clangd')
+	let g:lsc_server_commands.c = {'command': 'clangd --background-index', 'suppress_stderr': 1}
+	let g:lsc_server_commands.cpp = {'command': 'clangd --background-index', 'suppress_stderr': 1}
+	let g:completor_filetype_map.c = {'ft': 'common'}
+	let g:completor_filetype_map.cpp = {'ft': 'common'}
+endif
+
+let g:lsc_auto_map = {
+ \ 'GoToDefinition': 'gd',
+ \ 'FindReferences': 'gr',
+ \ 'FindImplementations': 'gI',
+ \ 'Rename': 'gR',
+ \ 'FindCodeActions': 'ga',
+ \ 'ShowHover': 1,
+ \ 'Completion': 'omnifunc',
+ \}
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-j>"
