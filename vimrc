@@ -228,7 +228,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'unblevable/quick-scope', Cond(g:recent_vim)
 Plug 'ludovicchabant/vim-gutentags', Cond(g:recent_vim)
 Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
-Plug 'suoto/vim-hdl'
+"Plug 'suoto/vim-hdl'
 Plug 'natebosch/vim-lsc', Cond(g:recent_vim)
 call plug#end()
 
@@ -282,6 +282,10 @@ if executable('clangd')
 	let g:lsc_server_commands.cpp = {'command': 'clangd --background-index', 'suppress_stderr': 1}
 	let g:completor_filetype_map.c = {'ft': 'common'}
 	let g:completor_filetype_map.cpp = {'ft': 'common'}
+endif
+if executable('rust-analyzer')
+	let g:lsc_server_commands.rust = 'rust-analyzer'
+	let g:completor_filetype_map.rust = {'ft': 'common'}
 endif
 
 let g:lsc_auto_map = {
