@@ -1,0 +1,53 @@
+[user]
+	name = Name
+	email = email
+[alias]
+	lstat = log --stat
+	ci = commit
+	di = diff
+	dih = diff -- .
+	wdi = diff --color-words
+	st = status
+	co = checkout
+	wc = whatchanged
+	lp = log -p
+	gl = log --graph --abbrev-commit --pretty=oneline --decorate
+	graph = log --graph --all --format='%h %s%n        (%an, %ar)%d' --abbrev-commit
+	lm = log origin/master..
+	lmp = log -p origin/master..
+	whatis = "!f() { git show -s --pretty='format:%h (%s, %ai' \"$@\" | sed -e 's/ [012][0-9]:[0-5][0-9]:[0-5][0-9] [-+][0-9][0-9][0-9][0-9]$/)\\n/'; }; f"
+	who = "!sh -c 'git log -1 --pretty=\"format:%an <%ae>\" --author=\"$1\"' -"
+	weekreport = shortlog --since=1.weeks
+	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+	snapshots = !git stash list --grep snapshot
+	stashlog = !git fsck --unreachable | grep commit | cut -d' ' -f3 | xargs git log --merges --no-walk --grep=WIP
+[push]
+	default = simple
+	recurseSubmodules = on-demand
+[log]
+	decorate = true
+[diff]
+	algorithm = histogram
+	tool = gvimdiff
+	submodule = log
+	colorMoved = default
+[status]
+	submoduleSummary = true
+[submodule]
+	recurse = true
+[init]
+	defaultBranch = master
+[pull]
+	ff = only
+[url "git://anongit.kde.org/"]
+	insteadOf = kde:
+[url "https://gitlab.archlinux.org/archlinux/packaging/packages/"]
+	insteadOf = arch:
+[merge]
+	conflictstyle = zdiff3
+[commit]
+	verbose = true
+[branch]
+	sort = committerdate
+[tag]
+	sort = taggerdate
