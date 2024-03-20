@@ -11,3 +11,6 @@
 
 [zellij.files]
 "zellij.kdl" = "~/.config/zellij/config.kdl"
+
+[doom.files]
+"doom/" = "~/.config/doom"
