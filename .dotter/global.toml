@@ -8,3 +8,6 @@
 
 [tmux.files]
 "tmux.conf" = "~/.tmux.conf"
+
+[zellij.files]
+"zellij.kdl" = "~/.config/zellij/config.kdl"
