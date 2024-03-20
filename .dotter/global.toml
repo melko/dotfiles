@@ -1,0 +1,10 @@
+[helpers]
+
+[vim.files]
+"vim" = { target = "~/.vim", type = "symbolic", recurse = false }
+
+[spacemacs.files]
+"spacemacs" = "~/.spacemacs"
+
+[tmux.files]
+"tmux.conf" = "~/.tmux.conf"
