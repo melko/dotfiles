@@ -1,0 +1,246 @@
+#autoload -U compinit promptinit
+#compinit
+#promptinit
+
+# Abilitare la correzione automatica
+#setopt correct
+
+# always rehash
+zstyle ':completion:*' rehash true
+# allow approximate
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+#zstyle -e ':completion:*:approximate:*' max-errors 'reply=($((($#PREFIX+$#SUFFIX)/3))numeric)'
+#zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# prevent annoying completion of the . builtin instead of ./ when accept-exact is true
+zstyle ':completion:*:builtins' ignored-patterns '.'
+
+# Colorare lo stderr
+#exec 2>>(while read line; do
+# echo -e '\e[91m'${(q)line}'\e[0m' > /dev/tty; print -n $'\0'; done &)
+#exec 2> >(while read line; do echo -e "\e[01;31m$line\e[0m"; done)
+
+# tab completion for PID :D
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*' force-list always
+
+# cd not select parent dir
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*' special-dirs true
+
+# don't complete users homes with cd (no need if cdable_vars is not set)
+# zstyle ':completion::complete:cd::' tag-order '! users' -
+
+# Creare un menu di scelta per il completamento
+zstyle ':completion:*' menu select
+zstyle ':completion:*' verbose 'yes'
+zstyle ':completion:*:descriptions' format "%B-- %d --%b"
+zstyle ':completion:*:messages' format "%B-- %d --%b"
+zstyle ':completion:*:warnings' format "%B--Nesuna corrispondenza per: %d --%b"
+zstyle ':completion:*:corrections' format "%B-- %d --%b"
+zstyle ':completion:*' group-name ''
+
+# Creazione di un menu per l'uso di kill
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+zstyle ':completion:*:kill:*' insert-ids single
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'   force-list always
+
+# Usare ^x^x per mostrare la history relativa al comando inserito
+zle -C hist-complete complete-word _generic
+zstyle ':completion:hist-complete:*' completer _history
+bindkey "^X^X" hist-complete
+
+# Configurazione di base per la cronologia
+export HISTSIZE=150000
+HISTFILE=~/.zsh_history
+export SAVEHIST=$HISTSIZE
+setopt incappendhistory
+#setopt histignorealldups
+
+typeset -g -A key
+bindkey '^?' backward-delete-char
+bindkey '^[[1~' beginning-of-line
+bindkey '^[[5~' up-line-or-history
+bindkey '^[[3~' delete-char
+bindkey '^[[4~' end-of-line
+bindkey '^[[6~' down-line-or-history
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[D' backward-char
+bindkey '^[[B' history-beginning-search-forward
+bindkey '^[[C' forward-char 
+# completion in the middle of a line
+bindkey '^i' expand-or-complete-prefix
+
+#bindkey "^[[A" history-incremental-pattern-search-backward
+#bindkey "^[[B" history-incremental-pattern-search-forward
+
+setopt hist_ignore_space
+# setopt cdablevars
+setopt autocd
+#setopt extendedglob
+#setopt completeinword
+#setopt notify
+setopt chaselinks
+setopt promptcr # manda a capo se non c'è l'EOL
+setopt recexact # recognize exact matches even if they are ambiguous
+
+setprompt () {
+	# load some modules
+	autoload -U colors zsh/terminfo # Used in the colour alias below
+	colors
+	setopt prompt_subst
+
+	# make some aliases for the colours: (coud use normal escap.seq's too)
+	for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+		eval PR_$color='%{$fg[${(L)color}]%}'
+	done
+	PR_NO_COLOR="%{$terminfo[sgr0]%}"
+
+	# Check the UID
+	if [[ $UID -ge 1000 ]]; then # normal user
+		eval PR_USER='${PR_YELLOW}%n${PR_NO_COLOR}'
+		eval PR_USER_OP='${PR_YELLOW}\$${PR_NO_COLOR}'
+	elif [[ $UID -eq 0 ]]; then # root
+		eval PR_USER='${PR_RED}%n${PR_NO_COLOR}'
+		eval PR_USER_OP='${PR_RED}%#${PR_NO_COLOR}'
+	fi
+
+	# Check if we are on SSH or not
+	if [[ -n "$SSH_CLIENT"  ||  -n "$SSH2_CLIENT" ]]; then
+		eval PR_HOST='${PR_YELLOW}%M${PR_NO_COLOR}' #SSH
+	else
+		eval PR_HOST='${PR_GREEN}%M${PR_NO_COLOR}' # no SSH
+	fi
+	# set the prompt
+	PS1=$'%B${PR_CYAN}${PR_USER}${PR_CYAN}%B@${PR_HOST}${PR_CYAN} [${PR_BLUE}%~${PR_CYAN}]${PR_USER_OP}%b '
+	PS1=$'%B${PR_CYAN}${PR_USER}${PR_CYAN}%B@${PR_HOST}${PR_CYAN} [${PR_CYAN}%~${PR_CYAN}]${PR_USER_OP}%b '
+	PS2=$'%_>'
+}
+setprompt
+
+#PATH=$PATH:~/bin
+##PATH=$PATH:~/texlive2017/bin/x86_64-linux
+#PATH=$PATH:/sbin:/usr/sbin:.
+
+alias radio24='mplayer mms://tilive1.alice.cdn.interbusiness.it/radio24sole1'
+alias radioheavymetal='mplayer http://s5.radiohost.pl:7052'
+alias radiowacken='mplayer http://62.141.50.223:8001/listen.pls'
+alias -g clip='|xclip -selection c'
+#CDPATH=$CDPATH:~:.:..
+alias -g C='cat'
+alias -g G='|grep --color'
+alias -g L='|less'
+alias -g T='|tail'
+alias grep='grep --color'
+alias open='xdg-open'
+
+
+# Module: Change directory with bookmarks
+# path: bin/zsh-modules-available/cdbookmarks
+
+function cdb_edit() {
+  vim ~/.cdbookmarks
+}
+
+function cdb() {
+  NewDir=`egrep -w "^$1" ~/.cdbookmarks | awk '{print $2}'`
+  echo cd $NewDir/$2
+  cd $NewDir/$2
+}
+
+function _cdb() {
+  compadd `cat ~/.cdbookmarks | awk '{print $1}'`
+}
+
+compdef _cdb cdb
+
+function _service() {
+  compadd `ls /etc/rc.d/*(.) | cut -c14-`
+}
+
+compdef _service service
+
+function mkdircd() {
+  mkdir $1
+  cd $1
+}
+function estrai() {
+  for arc in $@; do
+    case $1 in
+      *.tar.bz2) tar xvfj $1 ;;
+      *.tgz) tar xvfz $1 ;;
+      *.tar.gz) tar xvfz $1 ;;
+      *.tar.xz) tar xvfJ $1 ;;
+      *.tar.lzma) tar xvfJ $1 ;;
+      *.fpm) tar xvfJ $1 ;;
+      *.gz) gunzip $1 ;;
+      *.bz2) bunzip2 $1 ;;
+      *.xz) unxz $1 ;;
+      *.rar) unrar x $1 ;;
+      *.zip) unzip $1 ;;
+      *.tar) tar xvf $1 ;;
+      *) echo "unknow archive type" ;;
+    esac
+    shift
+  done
+}
+
+function define () {
+lynx -dump "http://www.google.com/search?hl=en&q=define%3A+${1}&btnG=Google+Search" | grep -m 3 -w "*"  | sed 's/;/ -/g' | cut -d- -f1 > /tmp/templookup.txt
+            if [[ -s  /tmp/templookup.txt ]] ;then
+                until ! read response
+                    do
+                    echo "${response}"
+                    done < /tmp/templookup.txt
+                else
+                    echo "Sorry $USER, I can't find the term \"${1} \""
+            fi
+rm -f /tmp/templookup.txt
+}
+
+function fblocate() {
+  pacman -Qo $(locate $1)
+}
+
+function mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
+function mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+function mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }
+function mktxz() { tar cvJf "${1%%/}.tar.xz"  "${1%%/}/"; }
+
+function note () {
+	if [ ! -z "$*" ]; then
+		echo "${*}\n" >> ~/.notes
+	else
+		cat ~/.notes
+	fi
+}
+
+init_ghc() {
+	GHC_BIN_PATH="$(stack path --compiler-bin)"
+	export GHC_PACKAGE_PATH=`stack path --ghc-package-path`
+	PATH=$PATH:"$GHC_BIN_PATH"
+}
+
+export LESS="-RFXM"
+export EDITOR="/usr/bin/vim"
+
+autoload -Uz vcs_info
+precmd () { vcs_info }
+setopt prompt_subst
+PS1="\$vcs_info_msg_0_$PS1"
+
+if [[ -e /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+if [[ -e /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# Use manjaro zsh prompt
+if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+  source /usr/share/zsh/manjaro-zsh-prompt
+fi

@@ -17,3 +17,7 @@
 
 [git.files]
 "gitconfig" = "~/.gitconfig"
+
+[zsh.files]
+"zsh/zshrc.local" = "~/.zshrc.local"
+"zsh/zshrc" = "~/.zshrc"
