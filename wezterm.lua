@@ -22,6 +22,7 @@ cfg.font_size = 11
 
 cfg.enable_scroll_bar = true
 cfg.scrollback_lines = 10000
+cfg.audible_bell = 'Disabled'
 
 cfg.window_padding = {left=5, right=5, top=5, bottom=5}
 cfg.inactive_pane_hsb = {saturation=0.9, brightness=0.6}
