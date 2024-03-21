@@ -21,3 +21,6 @@
 [zsh.files]
 "zsh/zshrc.local" = "~/.zshrc.local"
 "zsh/zshrc" = "~/.zshrc"
+
+[wezterm.files]
+"wezterm.lua" = "~/.config/wezterm/wezterm.lua"
