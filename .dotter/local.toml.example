@@ -1,0 +1,6 @@
+includes = []
+packages = ["vim", "spacemacs", "tmux", "zellij", "doom", "git", "zsh", "bash", "wezterm"]
+
+[files]
+
+[variables]
