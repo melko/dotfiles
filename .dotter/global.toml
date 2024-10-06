@@ -21,6 +21,9 @@
 [git.files]
 "gitconfig" = "~/.gitconfig"
 
+[lazygit.files]
+"lazygit.yml" = "~/.config/lazygit/config.yml"
+
 [zsh.files]
 "zsh/zshrc.local" = "~/.zshrc.local"
 "zsh/zshrc" = "~/.zshrc"
