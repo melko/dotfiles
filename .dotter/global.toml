@@ -3,6 +3,9 @@
 [vim.files]
 "vim" = { target = "~/.vim", type = "symbolic", recurse = false }
 
+[lazyvim.files]
+"lazyvim" = { target = "~/.config/nvim", type = "symbolic", recurse = false }
+
 [spacemacs.files]
 "spacemacs" = "~/.spacemacs"
 
