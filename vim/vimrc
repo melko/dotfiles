@@ -264,6 +264,7 @@ nmap <C-s>t :CtrlPTag<CR>
 " CtrlSpace
 let g:CtrlSpaceUseArrowsInTerm = 1
 let g:CtrlSpaceProjectRootMarkers = ['.git', '.hg', '.svn', '.bzr', '_darcs', 'CVS','.guten']
+let g:CtrlSpaceDefaultMappingKey = "<C-space> "
 
 " completor
 let g:completor_filetype_map = {}
