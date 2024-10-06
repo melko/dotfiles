@@ -4,3 +4,4 @@
 vim/.netrwhist
 vim/session/
 vim/plugged/
+vim/**/*.swp
