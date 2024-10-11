@@ -10,4 +10,4 @@ vim.opt.relativenumber = false
 vim.opt.spelllang = { "en", "it" }
 vim.opt.wrap = true
 vim.g.autoformat = false -- disable annoying autoformat on save
-vim.g.root_spec = { "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Makefile", ".project" }, "cwd" }
+vim.g.root_spec = { "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Makefile", ".idea", ".project" }, "cwd" }
