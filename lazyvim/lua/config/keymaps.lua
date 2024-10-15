@@ -6,3 +6,6 @@
 vim.keymap.set("i", "jk", "<esc>")
 -- highlights word under cursor with * do not jump on the next occurrence
 vim.keymap.set("n", "*", [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-M>]])
+
+vim.keymap.set("n", "<leader><left>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<leader><right>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
