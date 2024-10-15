@@ -15,4 +15,12 @@ return {
     "neovim/nvim-lspconfig",
     opts = { inlay_hints = { enabled = false } },
   },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = {
+      experimental = {
+        ghost_text = false, -- disable annoying ghost text when autocompleting
+      }
+    },
+  },
 }
