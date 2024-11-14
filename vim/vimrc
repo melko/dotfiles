@@ -80,6 +80,10 @@ nnoremap <leader><space> :noh<cr>
 "nnoremap * *<c-o>
 nnoremap * :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
 
+" Search selected text in visual mode
+vnoremap * y/\V<C-R>=substitute(escape(@@,"/\\"),"\n","\\\\n","ge")<CR><CR>
+vnoremap # y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>
+
 " highlight when double ckicking with mouse
 " set mouse=a is needed
 " do not use noremap here since we want the same behaviour as *
