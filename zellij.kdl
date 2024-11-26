@@ -96,6 +96,7 @@ keybinds clear-defaults=true {
         bind "Alt k" { MoveFocus "up"; SwitchToMode "locked"; }
         bind "Alt l" { MoveFocusOrTab "right"; SwitchToMode "locked"; }
         bind "s" { SwitchToMode "normal"; }
+        bind "q" { SwitchToMode "locked"; }
     }
     search {
         bind "c" { SearchToggleOption "CaseSensitivity"; }
@@ -355,7 +356,7 @@ default_mode "locked"
 // Valid values: positive integers
 // Default value: 10000
 // 
-// scroll_buffer_size 10000
+scroll_buffer_size 100000
  
 // Provide a command to execute when copying text. The text will be piped to
 // the stdin of the program to perform the copy. This can be used with
