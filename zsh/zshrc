@@ -2269,7 +2269,7 @@ alias lsw='ls -ld *(R,W,X.^ND/)'
 #a2# Display the ten biggest files
 alias lsbig="ls -flh *(.OL[1,10])"
 #a2# Only show directories
-alias lsd='ls -d *(/)'
+#alias lsd='ls -d *(/)'
 #a2# Only show empty directories
 alias lse='ls -d *(/^F)'
 #a2# Display the ten newest files
