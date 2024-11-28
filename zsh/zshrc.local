@@ -244,3 +244,16 @@ fi
 if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
   source /usr/share/zsh/manjaro-zsh-prompt
 fi
+
+# fzf
+if command -v fzf 2>&1 > /dev/null; then
+  if ! command -v bat fd 2>&1 > /dev/null; then
+    echo "Please install bat and fd to utilize fzf"
+  fi
+
+  export FZF_DEFAULT_COMMAND='fd --hidden --no-ignore -E .git'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+  export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+  source <(fzf --zsh)
+  alias fzfbat="fzf --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+fi
