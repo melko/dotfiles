@@ -20,9 +20,17 @@ return {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
       local cmp = require("cmp")
+
       opts.experimental = {
         ghost_text = false, -- disable annoying ghost text when autocompleting
       }
+
+      -- add borders to completion window
+      opts.window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      }
+
       -- overwrite default mapping to remove <C-y>
       opts.mapping = cmp.mapping({
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
