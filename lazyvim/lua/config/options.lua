@@ -11,3 +11,9 @@ vim.opt.spelllang = { "en", "it" }
 vim.opt.wrap = true
 vim.g.autoformat = false -- disable annoying autoformat on save
 vim.g.root_spec = { "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Makefile", ".idea", ".project" }, "cwd" }
+
+-- fully opaque completion window
+vim.o.pumblend = 0
+
+-- '-' is misleading for trailing spaces (can be confused with comments for some languages)
+vim.opt.listchars = { tab = "»»", trail = "~"}
