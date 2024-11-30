@@ -1,9 +1,9 @@
 return {
   -- { "ellisonleao/gruvbox.nvim" },
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = { colorscheme = "gruvbox" },
-  -- },
+  {
+    "LazyVim/LazyVim",
+    opts = { colorscheme = "catppuccin-mocha" },
+  },
   -- plugint to auto-detect indentation options when opening a buffer
   {
     "NMAC427/guess-indent.nvim",
