@@ -33,6 +33,8 @@ set scrolloff=2         " keep at least two lines of context
 set hidden              " allows buffers to be hidden
 
 set t_Co=256
+let &t_Cs = "\e[4:3m"   " undercurl start sequence (terminal capability)
+let &t_Ce = "\e[4:0m"   " undercurl end sequence (terminal capability)
 set synmaxcol=800       " Don't try to highlight lines longer than 800 characters.
 set lazyredraw          " Don't update the display while executing macros
 set updatetime=500      " refresh time
