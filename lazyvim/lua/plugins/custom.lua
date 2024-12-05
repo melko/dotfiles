@@ -4,7 +4,13 @@ return {
     "LazyVim/LazyVim",
     opts = { colorscheme = "catppuccin-mocha" },
   },
-  -- plugint to auto-detect indentation options when opening a buffer
+  {
+  "akinsho/bufferline.nvim",
+    opts = {
+      options = { numbers = "buffer_id" } -- display buffer numbers on the bufferline
+    },
+  },
+  -- plugin to auto-detect indentation options when opening a buffer
   {
     "NMAC427/guess-indent.nvim",
     config = function()
