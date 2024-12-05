@@ -9,6 +9,9 @@ vim.opt.relativenumber = false
 --vim.opt.tabstop = 4
 vim.opt.spelllang = { "en", "it" }
 vim.opt.wrap = true
+vim.opt.clipboard = "unnamed"
+vim.opt.conceallevel = 0
+
 vim.g.autoformat = false -- disable annoying autoformat on save
 vim.g.root_spec = { "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Makefile", ".idea", ".project" }, "cwd" }
 
