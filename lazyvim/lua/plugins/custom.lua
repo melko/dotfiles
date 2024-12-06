@@ -27,6 +27,9 @@ return {
     opts = function(_, opts)
       local cmp = require("cmp")
 
+      -- do not preselect first entry (add noselect to default config)
+      opts.completion = { completeopt = "menu,menuone,noinsert,noselect" }
+
       opts.experimental = {
         ghost_text = false, -- disable annoying ghost text when autocompleting
       }
@@ -46,7 +49,8 @@ return {
         ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
         ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = LazyVim.cmp.confirm({ select = true }),
+        ["<CR>"] = LazyVim.cmp.confirm({ select = false }), -- do not complete with <CR> when nothing is selected
+        ["<C-j>"] = LazyVim.cmp.confirm({ select = true }), -- use C-j to complete first entry when nothing is selected
         ["<S-CR>"] = LazyVim.cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ["<C-CR>"] = function(fallback)
           cmp.abort()
