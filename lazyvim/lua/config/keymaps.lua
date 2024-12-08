@@ -9,3 +9,6 @@ vim.keymap.set("n", "*", [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-
 
 vim.keymap.set("n", "<leader><left>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "<leader><right>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+
+-- git-related bindings
+vim.keymap.set("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", { desc = "Diff this" })

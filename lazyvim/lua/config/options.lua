@@ -12,6 +12,9 @@ vim.opt.wrap = true
 vim.opt.clipboard = "unnamed"
 vim.opt.conceallevel = 0
 
+-- default to vertical spit for diffs
+vim.opt.diffopt:append("vertical")
+
 vim.g.autoformat = false -- disable annoying autoformat on save
 vim.g.root_spec = { "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Makefile", ".idea", ".project" }, "cwd" }
 
@@ -19,4 +22,4 @@ vim.g.root_spec = { "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Ma
 vim.o.pumblend = 0
 
 -- '-' is misleading for trailing spaces (can be confused with comments for some languages)
-vim.opt.listchars = { tab = "»»", trail = "~"}
+vim.opt.listchars = { tab = "»»", trail = "~" }
