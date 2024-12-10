@@ -9,6 +9,13 @@ cfg.unix_domains = {
 		name = 'unix',
 	},
 }
+
+-- maximize window on opening
+wezterm.on("gui-startup", function(cmd)
+	local tab, pane, window = wezterm.mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
+end)
+
 --cfg.default_gui_startup_args = { 'connect', 'unix' }
 cfg.color_scheme = "Dark+"
 --cfg.color_scheme = 'Molokai'
