@@ -23,3 +23,21 @@ vim.o.pumblend = 0
 
 -- '-' is misleading for trailing spaces (can be confused with comments for some languages)
 vim.opt.listchars = { tab = "»»", trail = "~" }
+
+-- save position when switching buffer so it can be restored when entering it again
+vim.api.nvim_create_augroup('SaveWindowViewGroup', { clear = true })
+vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+  group = 'SaveWindowViewGroup',
+  pattern = '*',
+  callback = function ()
+    if vim.b.winview
+    then vim.fn.winrestview(vim.b.winview)
+    end
+    --else vim.b.winview = nil end
+  end,
+})
+vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
+  group = 'SaveWindowViewGroup',
+  pattern = '*',
+  callback = function () vim.b.winview = vim.fn.winsaveview() end,
+})
