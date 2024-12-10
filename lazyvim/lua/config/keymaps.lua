@@ -13,3 +13,6 @@ vim.keymap.set("n", "<leader><right>", "<cmd>BufferLineCycleNext<cr>", { desc = 
 -- git-related bindings
 vim.keymap.set("n", "<leader>gd", "<cmd>Gitsigns diffthis<cr>", { desc = "Diff this" })
 vim.keymap.set("n", "<leader>gn", "<cmd>Neogit<cr>")
+
+-- Clear highlights on search when pressing <Esc> in normal mode
+vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>')

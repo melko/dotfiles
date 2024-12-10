@@ -7,7 +7,10 @@ return {
   {
   "akinsho/bufferline.nvim",
     opts = {
-      options = { numbers = "buffer_id" } -- display buffer numbers on the bufferline
+      options = {
+        numbers = "buffer_id", -- display buffer numbers on the bufferline
+        separator_style = "slant",
+      },
     },
   },
   -- plugin to auto-detect indentation options when opening a buffer
