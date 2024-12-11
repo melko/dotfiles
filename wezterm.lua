@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 
 local cfg = {}
 
-cfg.default_prog = {'/usr/bin/zsh'}
+cfg.default_prog = {'/usr/bin/zsh', '-l'}
 cfg.check_for_updates = false
 cfg.unix_domains = {
 	{
