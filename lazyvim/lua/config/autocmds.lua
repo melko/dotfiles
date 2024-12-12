@@ -3,9 +3,8 @@
 -- Add any additional autocmds here
 
 -- save position when switching buffer so it can be restored when entering it again
-vim.api.nvim_create_augroup('SaveWindowViewGroup', { clear = true })
 vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
-  group = 'SaveWindowViewGroup',
+  group = vim.api.nvim_create_augroup('SaveWindowViewGroup', { clear = true }),
   pattern = '*',
   callback = function ()
     if vim.b.winview
