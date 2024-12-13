@@ -1,11 +1,14 @@
+-- This file contains customization to default plugins
+
 return {
   -- { "ellisonleao/gruvbox.nvim" },
   {
     "LazyVim/LazyVim",
     opts = { colorscheme = "catppuccin-mocha" },
   },
+
   {
-  "akinsho/bufferline.nvim",
+    "akinsho/bufferline.nvim",
     opts = {
       options = {
         numbers = "buffer_id", -- display buffer numbers on the bufferline
@@ -13,16 +16,13 @@ return {
       },
     },
   },
-  -- plugin to auto-detect indentation options when opening a buffer
-  {
-    "NMAC427/guess-indent.nvim",
-    opts = {},
-  },
+
   {
     "neovim/nvim-lspconfig",
     -- disable inlay hints (function argument name showing) since they visually clutter everything
     opts = { inlay_hints = { enabled = false } },
   },
+
   {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
@@ -60,6 +60,7 @@ return {
       })
     end,
   },
+
   {
     "folke/snacks.nvim",
     opts = function(_, opts)
@@ -86,27 +87,11 @@ return {
       opts.dashboard.preset.header = logo
     end,
   },
+
   {
     "gitsigns.nvim",
     keys = {
-      {"<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff this"},
-    },
-  },
-  {
-    "diffview.nvim",
-    cmd = "DiffviewOpen",
-  },
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim",         -- required
-      "sindrets/diffview.nvim",        -- optional - Diff integration
-      "nvim-telescope/telescope.nvim", -- optional
-    },
-    opts = { graph_style = "unicode" },
-    cmd = "Neogit",
-    keys = {
-      {"<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit"},
+      { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff this" },
     },
   },
 }
