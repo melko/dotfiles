@@ -9,7 +9,7 @@ vim.opt.relativenumber = false
 --vim.opt.tabstop = 4
 vim.opt.spelllang = { "en", "it" }
 vim.opt.wrap = true
-vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = ""
 vim.opt.conceallevel = 0
 
 -- default to vertical spit for diffs
