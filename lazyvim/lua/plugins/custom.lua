@@ -16,9 +16,7 @@ return {
   -- plugin to auto-detect indentation options when opening a buffer
   {
     "NMAC427/guess-indent.nvim",
-    config = function()
-      require("guess-indent").setup({})
-    end,
+    opts = {},
   },
   {
     "neovim/nvim-lspconfig",
@@ -89,17 +87,26 @@ return {
     end,
   },
   {
+    "gitsigns.nvim",
+    keys = {
+      {"<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff this"},
+    },
+  },
+  {
+    "diffview.nvim",
+    cmd = "DiffviewOpen",
+  },
+  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim",         -- required
       "sindrets/diffview.nvim",        -- optional - Diff integration
-
-      -- Only one of these is needed.
       "nvim-telescope/telescope.nvim", -- optional
-      --"ibhagwan/fzf-lua",              -- optional
-      --"echasnovski/mini.pick",         -- optional
     },
-    cmd = "Neogit",
     opts = { graph_style = "unicode" },
+    cmd = "Neogit",
+    keys = {
+      {"<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit"},
+    },
   },
 }
