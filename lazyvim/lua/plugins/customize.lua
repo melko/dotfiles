@@ -5,10 +5,12 @@ return {
   {
     "LazyVim/LazyVim",
     opts = { colorscheme = "catppuccin-mocha" },
+    optional = true,
   },
 
   {
     "akinsho/bufferline.nvim",
+    optional = true,
     opts = {
       options = {
         numbers = "buffer_id", -- display buffer numbers on the bufferline
@@ -19,12 +21,14 @@ return {
 
   {
     "neovim/nvim-lspconfig",
+    optional = true,
     -- disable inlay hints (function argument name showing) since they visually clutter everything
     opts = { inlay_hints = { enabled = false } },
   },
 
   {
     "hrsh7th/nvim-cmp",
+    optional = true,
     opts = function(_, opts)
       local cmp = require("cmp")
 
@@ -63,6 +67,7 @@ return {
 
   {
     "folke/snacks.nvim",
+    optional = true,
     opts = function(_, opts)
       local logo = [[
 ⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡴⠖⠒⠶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈
@@ -90,6 +95,7 @@ return {
 
   {
     "gitsigns.nvim",
+    optional = true,
     keys = {
       { "<leader>gd", "<cmd>Gitsigns diffthis<cr>", desc = "Diff this" },
     },
