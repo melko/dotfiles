@@ -23,3 +23,6 @@ vim.o.pumblend = 0
 
 -- '-' is misleading for trailing spaces (can be confused with comments for some languages)
 vim.opt.listchars = { tab = "»»", trail = "~" }
+
+-- disable all animations
+vim.g.snacks_animate = false
