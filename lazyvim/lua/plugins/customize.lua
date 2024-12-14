@@ -48,7 +48,8 @@ return {
 
       keymap = {
         preset = "super-tab",
-        -- re-add default <tab> completion since LazyVim overrides it
+        -- restore preset behavior since LazyVim overrides some stuff
+        ["<C-y>"] = {},
         ['<Tab>'] = {
           function(cmp)
             if cmp.snippet_active() then return cmp.accept()
