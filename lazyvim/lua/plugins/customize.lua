@@ -24,6 +24,43 @@ return {
     optional = true,
     -- disable inlay hints (function argument name showing) since they visually clutter everything
     opts = { inlay_hints = { enabled = false } },
+    -- opts = function(_, opts)
+    --   require("lspconfig").pyright.setup {}
+    --   opts.inlay_hints = { enabled = false },
+    -- end,
+  },
+
+  {
+    "Saghen/blink.cmp",
+    optional = true,
+    opts = {
+      completion = {
+        ghost_text = { enabled = false }, -- disable annoying ghost text when autocompleting
+
+        menu = {
+          border = "rounded",
+          draw = {
+            -- make completion window similar to nvim-cmp
+            columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+          },
+        },
+
+        documentation = { window = { border = "rounded", }, },
+      },
+
+      keymap = {
+        preset = "super-tab",
+        -- re-add default <tab> completion since LazyVim overrides it
+        ['<Tab>'] = {
+          function(cmp)
+            if cmp.snippet_active() then return cmp.accept()
+            else return cmp.select_and_accept() end
+          end,
+          'snippet_forward',
+          'fallback'
+        },
+      },
+    },
   },
 
   {
