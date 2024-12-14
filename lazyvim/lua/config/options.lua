@@ -11,6 +11,7 @@ vim.opt.spelllang = { "en", "it" }
 vim.opt.wrap = true
 vim.opt.clipboard = ""
 vim.opt.conceallevel = 0
+vim.opt.ignorecase = false
 
 -- default to vertical spit for diffs
 vim.opt.diffopt:append("vertical")
