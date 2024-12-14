@@ -35,8 +35,6 @@ return {
     optional = true,
     opts = {
       completion = {
-        ghost_text = { enabled = false }, -- disable annoying ghost text when autocompleting
-
         menu = {
           border = "rounded",
           draw = {
@@ -71,10 +69,6 @@ return {
 
       -- do not preselect first entry (add noselect to default config)
       opts.completion = { completeopt = "menu,menuone,noinsert,noselect" }
-
-      opts.experimental = {
-        ghost_text = false, -- disable annoying ghost text when autocompleting
-      }
 
       -- add borders to completion window
       opts.window = {

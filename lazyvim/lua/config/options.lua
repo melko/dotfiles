@@ -26,3 +26,6 @@ vim.opt.listchars = { tab = "»»", trail = "~" }
 
 -- disable all animations
 vim.g.snacks_animate = false
+
+-- disable AI completion (also remove ghost text)
+vim.g.ai_cmp = false
