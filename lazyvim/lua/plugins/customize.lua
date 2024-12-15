@@ -50,14 +50,6 @@ return {
         preset = "super-tab",
         -- restore preset behavior since LazyVim overrides some stuff
         ["<C-y>"] = {},
-        ['<Tab>'] = {
-          function(cmp)
-            if cmp.snippet_active() then return cmp.accept()
-            else return cmp.select_and_accept() end
-          end,
-          'snippet_forward',
-          'fallback'
-        },
       },
     },
   },
