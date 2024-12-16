@@ -33,3 +33,6 @@
 
 [wezterm.files]
 "wezterm.lua" = "~/.config/wezterm/wezterm.lua"
+
+[starship.files]
+"starship.toml" = "~/.config/starship.toml"
