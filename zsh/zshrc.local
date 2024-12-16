@@ -257,3 +257,7 @@ if command -v fzf 2>&1 > /dev/null; then
   source <(fzf --zsh)
   alias fzfbat="fzf --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 fi
+
+if [[ $TERM =~ .*256color ]] && hash starship 2>/dev/null; then
+	eval "$(starship init zsh)"
+fi
