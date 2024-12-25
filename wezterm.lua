@@ -1,6 +1,6 @@
 local wezterm = require 'wezterm'
 
-local cfg = {}
+local cfg = wezterm.config_builder()
 
 cfg.default_prog = {'/usr/bin/zsh', '-l'}
 cfg.check_for_updates = false
@@ -18,10 +18,6 @@ end)
 
 --cfg.default_gui_startup_args = { 'connect', 'unix' }
 cfg.color_scheme = "Dark+"
---cfg.color_scheme = 'Molokai'
---cfg.color_scheme = 'Google Dark (base16)'
---cfg.color_scheme = 'UltraViolent'
---cfg.color_scheme = 'Aura (Gogh)'
 --cfg.font = wezterm.font('Last Resort High-Efficiency')
 cfg.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 cfg.font_size = 11
@@ -31,7 +27,14 @@ cfg.enable_scroll_bar = true
 cfg.scrollback_lines = 10000
 cfg.audible_bell = 'Disabled'
 
-cfg.window_padding = {left=5, right=5, top=5, bottom=5}
+-- make the scrollbar thumb more visible
+local scheme = wezterm.get_builtin_color_schemes()[cfg.color_scheme]
+scheme.scrollbar_thumb = '#ffffff'
+cfg.color_schemes = {
+	[cfg.color_scheme] = scheme
+}
+
+-- cfg.window_padding = {left=5, right=5, top=5, bottom=5}
 cfg.inactive_pane_hsb = {saturation=0.9, brightness=0.6}
 
 -- Tab Bar Options
