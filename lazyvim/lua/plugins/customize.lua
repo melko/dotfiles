@@ -20,6 +20,12 @@ return {
   },
 
   {
+    "folke/noice.nvim",
+    optional = true,
+    opts = { presets = { lsp_doc_border = true } },
+  },
+
+  {
     "neovim/nvim-lspconfig",
     optional = true,
     -- disable inlay hints (function argument name showing) since they visually clutter everything
