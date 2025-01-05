@@ -5,8 +5,8 @@
 vim.opt.winbar = "%=%m %f"
 vim.opt.mouse = "nv"
 vim.opt.relativenumber = false
---vim.opt.shiftwidth = 4
---vim.opt.tabstop = 4
+vim.opt.shiftwidth = 8
+vim.opt.tabstop = 8
 vim.opt.spelllang = { "en", "it" }
 vim.opt.wrap = true
 vim.opt.clipboard = ""
@@ -23,7 +23,7 @@ vim.g.root_spec = { "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Ma
 vim.o.pumblend = 0
 
 -- '-' is misleading for trailing spaces (can be confused with comments for some languages)
-vim.opt.listchars = { tab = "»»", trail = "~" }
+vim.opt.listchars = { tab = "»_", trail = "~" }
 
 -- disable all animations
 vim.g.snacks_animate = false
