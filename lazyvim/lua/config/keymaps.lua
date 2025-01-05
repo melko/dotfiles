@@ -12,4 +12,9 @@ vim.keymap.set("n", "<leader><right>", "<cmd>BufferLineCycleNext<cr>", { desc = 
 
 
 -- Clear highlights on search when pressing <Esc> in normal mode
-vim.keymap.set('n', '<esc>', '<cmd>nohlsearch<cr>')
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
+
+-- easier way to go into normal mode inside a terminal
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+-- open a floating terminal
+vim.keymap.set({ "n", "t" }, "<leader>tt", "<cmd>Floaterminal<cr>", { desc = "Floating Terminal" })
