@@ -39,3 +39,6 @@
 
 [helix.files]
 "helix.toml" = "~/.config/helix/config.toml"
+
+[ghostty.files]
+"ghostty.conf" = "~/.config/ghostty/config"
