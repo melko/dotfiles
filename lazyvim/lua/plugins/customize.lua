@@ -3,9 +3,19 @@
 return {
   -- { "ellisonleao/gruvbox.nvim" },
   {
+    "folke/tokyonight.nvim",
+    optional = true,
+    opts = {
+      styles = {
+        keywords = { italic = true, bold = true },
+        functions = { bold = true },
+      },
+    },
+  },
+  {
     "LazyVim/LazyVim",
     optional = true,
-    opts = { colorscheme = "tokyonight-night" },
+    opts = { colorscheme = "tokyonight-moon" },
   },
 
   {
