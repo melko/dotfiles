@@ -36,3 +36,6 @@
 
 [starship.files]
 "starship.toml" = "~/.config/starship.toml"
+
+[helix.files]
+"helix.toml" = "~/.config/helix/config.toml"

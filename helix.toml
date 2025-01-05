@@ -1,0 +1,56 @@
+theme = "monokai_pro_machine"
+
+[editor]
+line-number = "relative"
+bufferline = "multiple"
+cursorline = true
+color-modes = true
+rulers = [100]
+popup-border = "all"
+soft-wrap.enable = true
+search.smart-case = false
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name"]
+
+[editor.indent-guides]
+character = "╎"
+render = true
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+
+[keys.normal.space]
+left = "goto_previous_buffer"
+right = "goto_next_buffer"
+
+[keys.normal]
+esc = ["collapse_selection", "keep_primary_selection"]
+a = ["append_mode", "collapse_selection"]
+X = "select_line_above"
+G = "goto_file_end"
+C-e = "scroll_down"
+C-y = "scroll_up"
+"K" = "hover"
+"A-k" = "keep_selections"
+0 = ["collapse_selection", "extend_to_line_start"]
+"^" = ["collapse_selection", "extend_to_first_nonwhitespace"]
+"$" = ["collapse_selection", "extend_to_line_end"]
+V = ["select_mode", "extend_to_line_bounds"]
+
+[keys.select]
+C-e = "scroll_down"
+C-y = "scroll_up"
+X = "select_line_above"
+0 = "goto_line_start"
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+G = "goto_file_end"
+
+[keys.insert]
+esc = ["normal_mode", "move_char_left"]
+C-c = ["normal_mode", "move_char_left"]
+j.k = ["normal_mode", "move_char_left"]
