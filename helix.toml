@@ -9,6 +9,17 @@ rulers = [100]
 popup-border = "all"
 soft-wrap.enable = true
 search.smart-case = false
+end-of-line-diagnostics = "hint"
+
+[editor.inline-diagnostics]
+cursor-line = "error"
+
+[editor.lsp]
+display-messages = true
+
+[editor.file-picker]
+# do not ignore hidden files
+hidden = false
 
 [editor.statusline]
 left = ["mode", "spinner", "version-control", "file-name"]
