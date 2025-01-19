@@ -4,6 +4,7 @@
 
 -- type jk to exit insert mode
 vim.keymap.set("i", "jk", "<esc>")
+vim.keymap.set("i", "<C-c>", "<esc>")
 -- highlights word under cursor with * do not jump on the next occurrence
 vim.keymap.set("n", "*", [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-M>]])
 
