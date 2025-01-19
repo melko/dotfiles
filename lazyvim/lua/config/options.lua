@@ -4,7 +4,7 @@
 
 vim.opt.winbar = "%=%m %f"
 vim.opt.mouse = "nv"
-vim.opt.relativenumber = false
+--vim.opt.relativenumber = false
 vim.opt.shiftwidth = 8
 vim.opt.tabstop = 8
 vim.opt.spelllang = { "en", "it" }
