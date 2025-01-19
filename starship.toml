@@ -25,6 +25,16 @@ success_symbol = "[](bold green)"
 ssh_symbol = " "
 
 
+[shell]
+disabled = false
+bash_indicator = ""
+zsh_indicator = ""
+fish_indicator = " <°\\)\\)\\)><"
+powershell_indicator = "_ "
+style = "bold yellow"
+format = '[$indicator]($style)'
+
+
 # other stuff
 
 [aws]
