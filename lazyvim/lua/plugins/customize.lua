@@ -35,6 +35,8 @@ return {
     opts = { presets = { lsp_doc_border = true } },
   },
 
+  { import = "lazyvim.plugins.extras.coding.mini-surround" },
+
   {
     "neovim/nvim-lspconfig",
     optional = true,
