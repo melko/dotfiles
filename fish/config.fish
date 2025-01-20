@@ -1,10 +1,11 @@
+set -gx SHELL "/usr/bin/fish"
 set -gx LESS "-RFXM"
 set -gx EDITOR "/usr/bin/vim"
 
 alias cdt="cd (mktemp -d)"
 
 if command -q eza
-    abbr -a ll eza -l --git --icons
+    abbr -a ll eza -l --git --icons=auto
 end
 
 if status is-interactive
