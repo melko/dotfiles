@@ -24,6 +24,9 @@
 [lazygit.files]
 "lazygit.yml" = "~/.config/lazygit/config.yml"
 
+[fish.files]
+"fish" = { target = "~/.config/fish", type = "symbolic", recurse = false }
+
 [zsh.files]
 "zsh/zshrc.local" = "~/.zshrc.local"
 "zsh/zshrc" = "~/.zshrc"
