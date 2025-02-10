@@ -259,7 +259,7 @@ if command -v fzf &> /dev/null; then
 fi
 
 if command -v eza &> /dev/null; then
-	alias ll="eza -l --git --icons"
+	alias ll="eza -l --git --icons=auto"
 fi
 
 # Use starship prompt
