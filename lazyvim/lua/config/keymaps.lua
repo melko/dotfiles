@@ -10,7 +10,10 @@ vim.keymap.set("n", "*", [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-
 
 vim.keymap.set("n", "<leader><left>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "<leader><right>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
-
+vim.keymap.set("n", "<S-tab>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
+vim.keymap.set("n", "<tab>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+vim.keymap.set("n", "<leader><tab><left>", "<cmd>tabprevious<cr>", { desc = "Prev Tab" })
+vim.keymap.set("n", "<leader><tab><right>", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
