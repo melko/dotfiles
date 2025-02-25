@@ -34,6 +34,8 @@
 	tool = gvimdiff
 	submodule = log
 	colorMoved = default
+	mnemonicPrefix = true
+	renames = copies
 [status]
 	submoduleSummary = true
 [submodule]
@@ -54,3 +56,7 @@
 	sort = committerdate
 [tag]
 	sort = taggerdate
+[help]
+	autocorrect = prompt
+[rebase]
+	updateRefs = true
