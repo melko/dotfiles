@@ -36,6 +36,24 @@ return {
   },
 
   {
+    "echasnovski/mini.pairs",
+    optional = true,
+    opts = {
+      modes = { command = false }, -- autopair in command mode should be banned
+      mappings = {
+        -- attempt to get a better behavior
+        -- inspiration from https://gist.github.com/tmerse/dc21ec932860013e56882f23ee9ad8d2
+        ["["] = { action = "open", pair = "[]", neigh_pattern = ".[%s%z%)}%]]" },
+        ["{"] = { action = "open", pair = "{}", neigh_pattern = ".[%s%z%)}%]]", },
+        ["("] = { action = "open", pair = "()", neigh_pattern = ".[%s%z%)]", },
+        ['"'] = { action = "closeopen", pair = '""', neigh_pattern = '[^%w\\"][^%w]', register = { cr = true }, },
+        ["'"] = { action = "closeopen", pair = "''", neigh_pattern = "[^%w\\'][^%w]", register = { cr = true }, },
+        ["`"] = { action = "closeopen", pair = "``", neigh_pattern = "[^%w\\`][^%w]", register = { cr = true }, },
+      }
+    },
+  },
+
+  {
     "neovim/nvim-lspconfig",
     optional = true,
     -- disable inlay hints (function argument name showing) since they visually clutter everything
