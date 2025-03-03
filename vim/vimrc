@@ -236,6 +236,7 @@ Plug 'ludovicchabant/vim-gutentags', Cond(g:recent_vim)
 Plug 'junegunn/rainbow_parentheses.vim', { 'on': 'RainbowParentheses' }
 "Plug 'suoto/vim-hdl'
 Plug 'natebosch/vim-lsc', Cond(g:recent_vim)
+Plug 'tpope/vim-surround'
 call plug#end()
 
 "-----------------------------------------------------------------------------
