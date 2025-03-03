@@ -45,3 +45,6 @@
 
 [ghostty.files]
 "ghostty.conf" = "~/.config/ghostty/config"
+
+[jujutsu.files]
+"jjconfig.toml" = "~/.jjconfig.toml"

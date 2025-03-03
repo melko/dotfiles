@@ -1,0 +1,18 @@
+user.name = 
+user.email = 
+
+#merge-tools.vimdiff.merge-tool-edits-conflict-markers = true
+
+[ui]
+default-command = ["log", "-T", "builtin_log_oneline"]
+
+[aliases]
+sl = ["log", "-T", "builtin_log_oneline", "-r", "::@"]
+
+[git]
+# Prevent pushing work in progress or anything explicitly labeled "private"
+private-commits = "description(glob:'wip:*') | description(glob:'private:*')"
+
+[templates]
+# Show the whole description, use the sl alias for the short oneliner one
+log = "builtin_log_compact_full_description"
