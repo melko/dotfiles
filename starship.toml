@@ -306,6 +306,10 @@ format = '\[[$symbol$workspace]($style)\]'
 [time]
 format = '\[[$time]($style)\]'
 
+[typst]
+symbol = ' '
+format = '\[[$symbol($version)]($style)\]'
+
 [username]
 format = '\[[$user]($style)\]'
 
