@@ -31,4 +31,11 @@ return {
       { "<leader>gn", "<cmd>Neogit<cr>", desc = "Neogit" },
     },
   },
+
+  -- Improved UI and workflow for the Neovim quickfix
+  {
+    'stevearc/quicker.nvim',
+    event = "FileType qf",
+    opts = {},
+  }
 }
