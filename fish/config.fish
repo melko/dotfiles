@@ -5,7 +5,7 @@ set -gx EDITOR "/usr/bin/vim"
 alias cdt="cd (mktemp -d)"
 
 if command -q eza
-    abbr -a ll eza -l --git --icons=auto
+    alias ll="eza -l --git --icons=auto"
 end
 
 if status is-interactive
@@ -25,4 +25,9 @@ if status is-interactive
     if command -q starship
         starship init fish | source
     end
+
+    # add abbreviation where L will be replaced with | less
+    abbr -a L --position anywhere "| less"
+    # add abbreviation where G will be replaced with | grep
+    abbr -a G --position anywhere "| grep"
 end
