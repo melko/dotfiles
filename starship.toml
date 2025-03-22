@@ -25,6 +25,12 @@ success_symbol = "[](bold green)"
 ssh_symbol = " "
 
 
+[jobs]
+symbol = " "
+style = "bold red"
+format = '\[[$symbol$number]($style)\]'
+
+
 [shell]
 disabled = false
 bash_indicator = ""
