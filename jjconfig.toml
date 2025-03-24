@@ -15,4 +15,20 @@ private-commits = "description(glob:'wip:*') | description(glob:'private:*')"
 
 [templates]
 # Show the whole description, use the sl alias for the short oneliner one
-log = "builtin_log_compact_full_description"
+#log = "builtin_log_compact_full_description"
+log = '''
+concat(
+  "Change ID: " ++ change_id.shortest(12) ++ "\tGit ID: " ++ commit_id.shortest(12) ++ "\n",
+  surround("Bookmarks: ", "\n", separate(" ", local_bookmarks, remote_bookmarks)),
+  surround("Tags     : ", "\n", tags),
+  "Author: " ++ format_detailed_signature(author) ++ "\n",
+  if(author.email() != committer.email(),
+    "Committer: " ++ format_detailed_signature(committer)  ++ "\n"),
+  if(config("ui.show-cryptographic-signatures").as_boolean(),
+    "Signature: " ++ format_detailed_cryptographic_signature(signature) ++ "\n"),
+  "\n",
+  indent("    ",
+    coalesce(description, label(if(empty, "empty"), description_placeholder) ++ "\n")),
+  "\n",
+)
+'''
