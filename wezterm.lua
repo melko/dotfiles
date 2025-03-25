@@ -17,11 +17,25 @@ wezterm.on("gui-startup", function(cmd)
 end)
 
 --cfg.default_gui_startup_args = { 'connect', 'unix' }
+local term_font = "JetBrains Mono"
 cfg.color_scheme = "Dark+"
---cfg.font = wezterm.font('Last Resort High-Efficiency')
+cfg.font = wezterm.font(term_font)
 cfg.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 cfg.font_size = 11
---cfg.font = wezterm.font "Noto Sans Mono"
+
+-- set bold font really bold
+cfg.font_rules = {
+	{
+		intensity = "Bold",
+		italic = false,
+		font = wezterm.font(term_font, { weight = "ExtraBold", stretch = "Normal", style = "Normal" }),
+	},
+	{
+		intensity = "Bold",
+		italic = true,
+		font = wezterm.font(term_font, { weight = "ExtraBold", stretch = "Normal", style = "Italic" }),
+	},
+}
 
 cfg.enable_scroll_bar = true
 cfg.scrollback_lines = 10000
