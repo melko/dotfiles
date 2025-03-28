@@ -57,7 +57,13 @@ return {
     "neovim/nvim-lspconfig",
     optional = true,
     -- disable inlay hints (function argument name showing) since they visually clutter everything
-    opts = { inlay_hints = { enabled = false } },
+    opts = {
+      inlay_hints = { enabled = false },
+      diagnostics = {
+        virtual_text = false,
+        virtual_lines = { current_line = true },
+      },
+    },
     -- opts = function(_, opts)
     --   require("lspconfig").pyright.setup {}
     --   opts.inlay_hints = { enabled = false },
