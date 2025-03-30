@@ -17,7 +17,7 @@ vim.opt.ignorecase = false
 vim.opt.diffopt:append("vertical")
 
 vim.g.autoformat = false -- disable annoying autoformat on save
-vim.g.root_spec = { "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Makefile", ".idea", ".project" }, "cwd" }
+vim.g.root_spec = { ".project", "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Makefile", ".idea" }, "cwd" }
 
 -- fully opaque completion window
 vim.o.pumblend = 0
