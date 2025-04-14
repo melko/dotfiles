@@ -30,4 +30,8 @@ if status is-interactive
     abbr -a L --position anywhere "| less"
     # add abbreviation where G will be replaced with | grep
     abbr -a G --position anywhere "| grep"
+
+    # set up/down arrow behaviour zsh-like
+    bind down down-or-hsearch
+    bind up up-or-hsearch
 end
