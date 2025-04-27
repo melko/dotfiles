@@ -23,9 +23,14 @@
   (global-whitespace-mode +1))
 
 (map! :leader
-      "<left>" #'previous-buffer
-      "<right>" #'next-buffer
+      "<left>" #'centaur-tabs-backward
+      "<right>" #'centaur-tabs-forward
       )
+
+;; do not group buffers in the tab bar
+(after! centaur-tabs
+  (setopt centaur-tabs-buffer-groups-function (lambda () '("All")))
+  )
 
 (add-hook 'after-change-major-mode-hook
           (lambda ()
