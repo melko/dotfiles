@@ -5,6 +5,7 @@
 (setq doom-font (font-spec :size 16))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized)) ;; maximize emacs on opening
 (setq confirm-kill-emacs nil) ;; do not ask confirmation when quitting
+(setq-default evil-escape-key-sequence "jk")
 
 (use-package! org
   :config
@@ -29,6 +30,10 @@
           (lambda ()
             (modify-syntax-entry ?_ "w"))) ;; word movements more like vim
 ;;(defalias 'forward-evil-word 'forward-evil-symbol) ;; word movements more like vim
+
+;; show invisible stuff when in insert mode
+;(add-hook 'evil-insert-state-entry-hook (lambda () (visible-mode 1)))
+;(add-hook 'evil-insert-state-exit-hook (lambda () (visible-mode 0)))
 
 (evil-define-motion search-word-forward-stand (count &optional symbol)
   "Search for the next occurrence of word under the cursor (without moving)."
