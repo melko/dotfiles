@@ -7,10 +7,11 @@
 (setq confirm-kill-emacs nil) ;; do not ask confirmation when quitting
 (setq-default evil-escape-key-sequence "jk")
 
-(use-package! org
-  :config
+(after! org
   (setq
    org-log-done 'time
+   org-hide-leading-stars nil
+   org-startup-indented nil
    )
   )
 
