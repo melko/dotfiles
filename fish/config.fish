@@ -34,4 +34,7 @@ if status is-interactive
     # set up/down arrow behaviour zsh-like
     bind down down-or-hsearch
     bind up up-or-hsearch
+
+    # delete a whole word (up to previous space) with ctrl-w
+    bind ctrl-w backward-kill-bigword
 end
