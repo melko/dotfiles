@@ -22,3 +22,6 @@ vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>")
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 -- open a floating terminal
 vim.keymap.set({ "n", "t" }, "<leader>tt", "<cmd>Floaterminal<cr>", { desc = "Floating Terminal" })
+
+vim.keymap.set({"n", "v"}, "<c-e>", "3<c-e>")
+vim.keymap.set({"n", "v"}, "<c-y>", "3<c-y>")
