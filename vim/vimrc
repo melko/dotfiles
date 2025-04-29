@@ -67,6 +67,9 @@ if g:recent_vim
 	" persistent undo
 	set undodir=~/.vim/undodir
 	set undofile
+
+	" better vimdiff
+	set diffopt+=indent-heuristic,linematch:60,algorithm:histogram
 endif
 if has('nvim')
 	set undodir=~/.local/share/nvim/undodir
