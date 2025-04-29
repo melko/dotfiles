@@ -15,6 +15,9 @@ vim.opt.ignorecase = false
 
 -- default to vertical spit for diffs
 vim.opt.diffopt:append("vertical")
+vim.opt.diffopt:append("algorithm:histogram")
+vim.opt.diffopt:append("linematch:60")
+vim.opt.diffopt:append("indent-heuristic")
 
 vim.g.autoformat = false -- disable annoying autoformat on save
 vim.g.root_spec = { ".project", "lsp", { ".git", "lua", ".svn", ".hg", ".bzr", "_darcs", "Makefile", ".idea" }, "cwd" }
