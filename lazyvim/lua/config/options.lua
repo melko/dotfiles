@@ -33,3 +33,5 @@ vim.g.snacks_animate = false
 
 -- disable AI completion (also remove ghost text)
 vim.g.ai_cmp = false
+
+vim.o.guifont = "Hack Nerd Font Mono,Noto_Color_Emoji:h12"
