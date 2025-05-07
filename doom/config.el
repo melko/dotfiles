@@ -10,8 +10,8 @@
 (after! org
   (setq
    org-log-done 'time
-   org-hide-leading-stars nil
-   org-startup-indented nil
+   ;org-hide-leading-stars nil
+   ;org-startup-indented nil
    )
   )
 
