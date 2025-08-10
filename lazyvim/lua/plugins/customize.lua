@@ -63,6 +63,14 @@ return {
         virtual_text = false,
         virtual_lines = { current_line = true },
       },
+      servers = {
+        tinymist = {
+          mason = false, -- do not autoinstall with mason
+          root_dir = function(_)
+            return LazyVim.root.get()
+          end,
+        },
+      },
     },
     -- opts = function(_, opts)
     --   require("lspconfig").pyright.setup {}
