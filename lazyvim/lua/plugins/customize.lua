@@ -36,7 +36,7 @@ return {
   },
 
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     optional = true,
     opts = {
       modes = { command = false }, -- autopair in command mode should be banned
