@@ -21,7 +21,7 @@ local term_font = "JetBrains Mono"
 cfg.color_scheme = "Dark+"
 cfg.font = wezterm.font(term_font)
 cfg.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
-cfg.font_size = 11
+cfg.font_size = 12
 
 -- set bold font really bold
 cfg.font_rules = {
