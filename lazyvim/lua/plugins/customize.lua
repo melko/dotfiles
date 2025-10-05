@@ -66,8 +66,8 @@ return {
       servers = {
         tinymist = {
           mason = false, -- do not autoinstall with mason
-          root_dir = function(_)
-            return LazyVim.root.get()
+          root_dir = function(_, on_dir)
+            on_dir(LazyVim.root.get())
           end,
         },
       },
