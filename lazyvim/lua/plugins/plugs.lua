@@ -1,6 +1,16 @@
 -- This file contains non-default plugins
 
 return {
+  {
+    "mistweaverco/kulala.nvim",
+    ft = { "http", "rest" },
+    keys = {
+      { "<leader>R", "", desc = "+Rest", ft = "http" }
+    },
+    opts = {
+      global_keymaps = true,
+    },
+  },
   -- plugin to auto-detect indentation options when opening a buffer
   {
     "NMAC427/guess-indent.nvim",
