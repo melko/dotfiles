@@ -1,0 +1,2 @@
+#!/bin/sh
+vmstat 1 2 | awk 'END{printf("%3d%%\n", 100-$15)}'
