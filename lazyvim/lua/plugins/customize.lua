@@ -61,7 +61,7 @@ return {
       inlay_hints = { enabled = false },
       diagnostics = {
         virtual_text = false,
-        virtual_lines = { current_line = true },
+        --virtual_lines = { current_line = true },
       },
       servers = {
         tinymist = {

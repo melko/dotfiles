@@ -11,6 +11,12 @@ return {
       global_keymaps = true,
     },
   },
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    opts = {},
+  },
   -- plugin to auto-detect indentation options when opening a buffer
   {
     "NMAC427/guess-indent.nvim",
