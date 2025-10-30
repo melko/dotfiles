@@ -1,6 +1,7 @@
 set -gx SHELL "/usr/bin/fish"
 set -gx LESS "-RFXM"
 set -gx EDITOR "/usr/bin/vim"
+set -gx LIBVIRT_DEFAULT_URI "qemu:///system"
 
 alias cdt="cd (mktemp -d)"
 
