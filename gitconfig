@@ -60,3 +60,5 @@
 	autocorrect = prompt
 [rebase]
 	updateRefs = true
+	rebaseMerges = true
+	autoSquash = true
