@@ -48,3 +48,6 @@
 
 [jujutsu.files]
 "jjconfig.toml" = "~/.jjconfig.toml"
+
+[kitty.files]
+"kitty.conf" = { target = "~/.config/kitty/kitty.conf", type = "symbolic" }
