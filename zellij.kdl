@@ -2,6 +2,8 @@ keybinds clear-defaults=true {
     locked {
         bind "Ctrl a" { SwitchToMode "tmux"; }
         bind "Ctrl g" { SwitchToMode "normal"; }
+        bind "Ctrl Shift tab" { GoToPreviousTab; }
+        bind "Ctrl tab" { GoToNextTab; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
